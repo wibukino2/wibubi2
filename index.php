@@ -381,13 +381,13 @@
                                 <li class="category-item category-item--active" data-filter="all">
                                     <a class="category-item__link">All</a>
                                 </li>
-                                <li class="category-item" data-filter="figure">
+                                <li class="category-item" data-filter="Figure">
                                     <a class="category-item__link" >Figure</a>
                                 </li>
-                                <li class="category-item" data-filter="cosplay">
+                                <li class="category-item" data-filter="Cosplay">
                                     <a class="category-item__link">Cosplay</a>
                                 </li>
-                                <li class="category-item" data-filter="accessory">
+                                <li class="category-item" data-filter="Accessory">
                                     <a class="category-item__link">Phụ kiện</a>
                                 </li>
                             </ul>
@@ -512,9 +512,7 @@
                                     <a>
                                     
                                 </div>";
-                               }
-                                
-                                ?>
+                               } ?>
 
                                 
                             </div>

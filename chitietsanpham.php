@@ -367,7 +367,7 @@
             </ul>
         </header>
         <?php 
-        $sql = "select * from chitietsp where id='$_GET[id]' limit 1";
+        $sql = "select * from danhmucsp, chitietsp where chitietsp.id='$_GET[id]' limit 1";
         $result = $conn->query($sql);
         // print_r($result);
         while($row =$result -> fetch_assoc()){
@@ -377,11 +377,11 @@
                 <div class='row'>
                     <div class='main__product'>
                         <div class='col l-4 main__product-item'>
-                            <img class='main__product-img' src='./assets/img/product/RitaLmao.jpg' alt=''>
+                            <img class='main__product-img' src='".$row['anh']."' alt=''>
                         </div>
                         <div class='col l-8 main__product-info'>
                             <h1 class='main__product-name'>
-                                [Mihoyo] Mô hình nhân vật Honkai Impact 3rd Rita Rossweisse
+                            ".$row['tensp']."
                             </h1>
                             <div class='main__product-info'>
                                 <div class='info-status'>
@@ -392,23 +392,23 @@
                                 <div class='info-type'>
                                     <i class='fab fa-magento info-tag'></i>
                                     <div class='info-name'>Loại sản phẩm: </div>
-                                    <span class='info-name-1'>Figure</span>
+                                    <span class='info-name-1'>".$row['loaihinh']."</span>
                                 </div>
                                 <div class='info-id'>
                                     <i class='fas fa-fingerprint info-tag'></i>
                                     <div class='info-name'>Mã sản phẩm: </div>
-                                    <span class='info-name-1'>1</span>
+                                    <span class='info-name-1'>".$row['id']."</span>
                                 </div>
                             </div>
                             <div class='main__product-price'>
                                 <div class='old-price'>
-                                    Giá cũ: 3.999.000đ
+                                    Giá cũ: ".number_format($row['giagoc'],0,',','.')."đ
                                 </div>
                                 <div class='discount-price'>
                                     Giảm giá: 600.000đ
                                 </div>
                                 <div class='current-price'>
-                                    Giá: 3.399.000đ
+                                    Giá: ".number_format($row['giagiam'],0,',','.')."đ
                                 </div>
                             </div>
                             <div class='main__product-order'>
@@ -425,7 +425,7 @@
                                 
                             </div>
                         </div>
-                        ?>
+                    
                     </div>
                 </div>
                 <div class='row'>
@@ -457,7 +457,8 @@
             </div>
             
 
-        </div>
+        </div>";}
+        ?>
 
         <footer class='footer'>
             <div class='grid wide footer__content'>
@@ -543,8 +544,7 @@
                     </div>
 
                 </div>
-            </div>";}
-            ?>
+            </div>
             <div class="footer__bottom">
                 <div class="grid wide">
                    <p class="footer__text"> © 2021 - Bản quyền thuộc về Công ty TNHH MTV KyoNo1</p>
