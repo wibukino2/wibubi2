@@ -367,7 +367,7 @@
             </ul>
         </header>
         <?php 
-        $sql = "select * from danhmucsp, chitietsp where chitietsp.id='$_GET[id]' limit 1";
+        $sql = "select * from danhmucsp, chitietsp where danhmucsp.id=chitietsp.id and chitietsp.id='$_GET[id]' limit 1";
         $result = $conn->query($sql);
         // print_r($result);
         while($row =$result -> fetch_assoc()){
