@@ -667,7 +667,7 @@
                                 </div>
                                 <div class="col l-2-4 m-4 c-6 product-all" data-item="figure">
                                     <a href="#" class="home-product-item">
-                                        <div class="home-product-item__img" style="background-image: url(./assets/img/product/5.jfif)"></div>
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/product/hina.jpg)"></div>
                                         <h4 class="home-product-item__name">Mô hình figure :Amano Hina</h4>
                                         <div class="home-product-item__price">
                                             <span class="home-product-item__price-old">1.000.000đ</span>

@@ -405,7 +405,7 @@
                                     Giá cũ: ".number_format($row['giagoc'],0,',','.')."đ
                                 </div>
                                 <div class='discount-price'>
-                                    Giảm giá: 600.000đ
+                                    Giảm giá: ".number_format($row['giagoc']-$row['giagiam'],0,',','.')."đ
                                 </div>
                                 <div class='current-price'>
                                     Giá: ".number_format($row['giagiam'],0,',','.')."đ
@@ -435,11 +435,7 @@
                             <span>Thông tin sản phẩm</span>
                         </div>
                         <ul class='product-desc__list'>
-                            <li>Mô hình Rita Phiên bản Maid</li> 
-                            <li>Loại: mô hình tĩnh</li> 
-                            <li>Chiều cao: ~30cm</li> 
-                            <li>Tình trạng: Hàng mới </li> 
-                            <li>Thương hiệu : Chính hãng Mihoyo</li> 
+                        ".$row['thongtin']." 
                         </ul>
                     </div>
                 </div>
