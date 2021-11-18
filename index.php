@@ -1,4 +1,5 @@
 <?php require_once('connect.php');
+
 $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
 
 

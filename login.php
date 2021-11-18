@@ -13,6 +13,10 @@ if ($check==1){
     $_SESSION['user']=$data;
 header('location: index.php');
 }
-else {echo"<h2>Dangnhapthatbai</h2>";
+alert("Sai tài khoản hoặc mật khẩu");
+header('location: index.php');
+function alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
 }
+
 ?>
