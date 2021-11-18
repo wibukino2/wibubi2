@@ -1684,7 +1684,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
         </div>
     </div>
 
-
+    <script src="./dn.js"></script>
     <script src="./validator.js"></script>
     <script>
         //Validator
@@ -1722,7 +1722,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
             }
         });
         </script>
-
+<script src="./login.js"></script>
 <script src="./main.js"></script>
 </body>
 </html>
