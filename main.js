@@ -29,12 +29,20 @@ function onRegisForm(){
     document.getElementById("js-modal-regis").classList.add('open');
 }
 
+const iconRun = document.querySelector('.header__logo-img')
+
+const iconAnimate = iconRun.animate([{ transform: "rotate(360deg)" }], {
+    duration: 10000,
+    iterations: Infinity
+    });
+
+
 //danh muc
 const name_item = document.querySelectorAll('.home-product-item__name')
 const search_item = document.getElementById('search-item')
 const element_product = document.querySelectorAll('.product-all')
 const filter_btn = document.querySelectorAll('#category-list .category-item')
-
+console.log(Array.from(filter_btn));
 Array.from(filter_btn).forEach(function (element) {
     element.addEventListener('click', function (e) {
         for(let i=0; i<filter_btn.length; i++) {
@@ -55,7 +63,8 @@ Array.from(filter_btn).forEach(function (element) {
 })
 
 //search
-
+// const element_product = document.querySelectorAll('.product-all')
+// const search_item = document.getElementById('search-item')
     search_item.addEventListener('keyup', searchItem)
     function searchItem(){
         // chuyển thành viết thường

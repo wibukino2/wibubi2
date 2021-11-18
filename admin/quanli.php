@@ -13,11 +13,11 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/grid.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;1,300&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;1,300&display=swap">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css">
     <link rel="stylesheet" href="../assets/fonts/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="./admin.css">
+    <link rel="stylesheet" href="./quanly.css">
 
 </head>
 
@@ -48,38 +48,33 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="col l-10 m-12 c-12 product-all" data-item="">
-                    <h1 class="xinchao">Xin chào ADMIN<h1>
-                    </div>
                     <div class="col l-10 m-12 c-12 product-all active-item" data-item="sanpham">
                         <a href=""><button class="btn btn-primary">Add</button></a>
-                        <div class="templatemo-content-widget no-padding">
-                            <div class="panel panel-default table-responsive table-padding">
-                                <table class="table table-striped table-bordered templatemo-user-table" id="data-table">
-                                    <thead>
-                                        <tr>
-                                            <td align="center"><span class="white-text">#</span></td>
-                                            <td align="center"><span class="white-text">Type</td>
-                                            <td align="center"><span class="white-text">Name</td>
-                                            <td align="center"><span class="white-text">Status</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                $sql = "select *from danhmucsp";
-                                $result = $conn->query($sql);
-                               while($row =$result -> fetch_assoc()){
-                                echo"
-                                <tr>
-                                    <td align='center'>".$row['id']."</td>
-                                    <td align='center'>".$row['loaihinh']."</td>
-                                    <td align='left'>".$row['tensp']."</td>
-                                </tr>";
-                               }
-                               ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="">
+                            <table class="table-product" id="data-table">
+                                <thead class='list-head'>
+                                    <tr class='list-title'>
+                                        <td align="center"><span class="white-text">#</span></td>
+                                        <td align="center"><span class="white-text">Type</td>
+                                        <td align="center"><span class="white-text">Name</td>
+                                        <td align="center"><span class="white-text">Status</td>
+                                    </tr>
+                                </thead>
+                                <tbody class='list-product'>
+                                    <?php
+                            $sql = "select *from danhmucsp";
+                            $result = $conn->query($sql);
+                            while($row =$result -> fetch_assoc()){
+                            echo"
+                                    <tr class='list-product__row'>
+                                        <td class='list-product__data' align='center'>".$row['id']."</td>
+                                        <td class='list-product__data' align='center'>".$row['loaihinh']."</td>
+                                        <td class='list-product__data' align='left'>".$row['tensp']."</td>
+                                    </tr>";
+                            }
+                            ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div class="col l-10 m-12 c-12 product-all active-item" data-item="user">
