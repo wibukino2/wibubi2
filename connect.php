@@ -11,6 +11,7 @@ $conn = new mysqli($servername, $username, $password,$database);
 //   die("Loi ket noi " . $conn->connect_error);
 // }
 // echo "Connected successfully";
+session_start();
 function exRs($sql){
     mysqli_set_charset($conn,'utf8');
     $data = [];

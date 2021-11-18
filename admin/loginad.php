@@ -1,4 +1,6 @@
 <?php require_once('../connect.php') ?>
+<?php
+        session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +21,6 @@
 <body>
 <div class="modal open" id="js-modal-login">
         <div class="modal__overlay" >
-
         </div> 
     <div class="modal__body">
         <!-- Login form -->

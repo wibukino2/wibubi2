@@ -1,7 +1,7 @@
 function openProduct(){
     window.location('chitietsanpham.html')
 }
-document.getElementById("js-dangnhap-btn").onclick = loginForm;
+// document.getElementById("js-dangnhap-btn").onclick = loginForm;
 
 function loginForm(){
 
@@ -50,7 +50,6 @@ Array.from(filter_btn).forEach(function (element) {
         else {
             item.style.display = 'none';
         }
-
     })
     })
 })
@@ -59,6 +58,7 @@ Array.from(filter_btn).forEach(function (element) {
 
     search_item.addEventListener('keyup', searchItem)
     function searchItem(){
+        // chuyển thành viết thường
         let valueItem = search_item.value.toLowerCase();
         Array.from(element_product).forEach(function(element){
             let nameItem = element.querySelector('.home-product-item__name').textContent;

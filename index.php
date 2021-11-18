@@ -1,4 +1,8 @@
-<?php require_once('connect.php') ?>
+<?php require_once('connect.php');
+$user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +26,7 @@
         <header class="header">
             <div class="grid wide">
                 <nav class="header__navbar hide-on-mobile-tablet">
-                     <ul class="header__navbar-list">
+                    <ul class="header__navbar-list">
                         <li class="header__navbar-item header__navbar-item--has-qr header__navbar-item--separate">
                             Vào cửa hàng trên web
                             
@@ -49,8 +53,8 @@
                                 <i class="header__navbar-icon fab fa-instagram"></i>
                             </a>
                         </li>
-                     </ul>
-                     <ul class="header__navbar-list">
+                    </ul>
+                    <ul class="header__navbar-list">
                         <li class="header__navbar-item header__navbar-item--has-noti">
                             <a href="" class="header__navbar-item-link ">
                                 <i class="header__navbar-icon far fa-bell"></i>
@@ -116,17 +120,14 @@
                             </a>
                         </li>
                         <!-- <li class="header__navbar-item header__navbar-item--bold header__navbar-item--separate">Đăng ký</li>
-                        <li class="header__navbar-item header__navbar-item--bold">Đăng nhập</li> -->
-
-                        <li class="header__navbar-item header__navbar-user">
+                        <li class="header__navbar-item header__navbar-item--bold">Đăng nhập</li> -->            
            <!--Khoan hẳng xoá--> <!-- <img src="https://cf.shopee.vn/file/8e289302619dfd2b67f9795e097c420f_tn" alt="" class="header__navbar-user-img"> -->
-
-                            <button id="js-dangnhap-btn" class="dangnhap-btn">
-                                Đăng nhập                                
-                            </button>
-
-                            <!-- <ul class="header__navbar-user-menu">
-                                <li  class="header__navbar-user-item ">
+                        <li class="header__navbar-item header__navbar-user">
+                            <?php if(isset($_SESSION['user'])){ ?>                        
+                            <img src="https://cf.shopee.vn/file/8e289302619dfd2b67f9795e097c420f_tn" alt="" class="header__navbar-user-img">
+                            <span class="header__navbar-user-name"><?php echo $user['email'] ?></span>
+                            <ul class="header__navbar-user-menu">
+                                <li class="header__navbar-user-item">
                                     <a href="">Tài khoản của tôi</a>
                                 </li>
                                 <li class="header__navbar-user-item">
@@ -136,12 +137,17 @@
                                     <a href="">Đơn mua</a>
                                 </li>
                                 <li class="header__navbar-user-item header__navbar-user-item--separate">
-                                    <a href="">Đăng xuất</a>
+                                    <a href="logout.php">Đăng xuất</a>
                                 </li>
-                            </ul> -->
-                        </li>
-
-                     </ul>
+                            </ul>
+                        
+                            <?php } else { ?>
+                                <button id="js-dangnhap-btn" class="dangnhap-btn">
+                                Đăng nhập                                
+                                </button>
+                            <?php } ?>                        
+                        <li>
+                    </ul>
                 </nav>
                 
                 <div class="header-with-search">
