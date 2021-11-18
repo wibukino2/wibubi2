@@ -14,9 +14,8 @@ if ($check==1){
 header('location: index.php');
 }
 alert("Sai tài khoản hoặc mật khẩu");
-header('location: index.php');
 function alert($msg) {
     echo "<script type='text/javascript'>alert('$msg');</script>";
 }
-
+header( "refresh:1;url=index.php" );
 ?>
