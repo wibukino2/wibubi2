@@ -669,6 +669,140 @@
 
         </div>
     </div> -->
+    <div class="modal" id="js-modal-regis">
+        <div class="modal__overlay" onclick="offloginForm(), offRegisForm()">
 
+        </div> 
+
+        <div class="modal__body">
+            <!-- Register form -->
+            <form action="regis.php" method="POST" role="form">
+            <div class="auth-form regis">
+                <div class="auth-form__container" id="form-1">
+                    <div class="auth-form__header">
+                        <h3 class="auth-form__heading">Đăng ký</h3>
+                        <a onclick="offRegisForm(),loginForm()" class="auth-form__switch-btn">Đăng nhập</a>
+                    </div>
+
+                    <div class="auth-form__form">
+                        <div class="auth-form__group">
+                            <div><div>
+                                <input name="email" type="text" id="email1" class="auth-form__input" placeholder="Email">
+
+                            </div></div>
+                            <span class="form-message"></span>
+                        </div>
+
+                        <div class="auth-form__group">
+                            <input type="password" name="password" id="password1" class="auth-form__input" placeholder="Mật khẩu">
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="auth-form__input" placeholder="Nhập lại mật khẩu">
+                            <span class="form-message"></span>
+                        </div>
+                    </div>
+
+                    <div class="auth-form__aside">
+                        <p class="auth-form__policy-text">
+                            Bằng việc ấn đăng ký, bạn đã đồng ý với WjpuKi về 
+                            <a href="" class="auth-form__text-link">Điều khoản dịch vụ </a> & 
+                            <a href="" class="auth-form__text-link">Chính sách bảo mật. </a>
+
+                        </p>
+                    </div>
+                    
+                        <div class="auth-form__control">
+                            <a onclick="offRegisForm()" class="btn btn--normal auth-form__control-back">TRỞ LẠI</a>
+                            <button class="btn btn--primary form-submit">ĐĂNG KÝ</button>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="auth-form__socials">
+                    <a href="" class="auth-form__socials--fb btn btn--size-s btn--with-icon">
+                        <i class="auth-form__socials-icon fab fa-facebook-square"></i>
+                        <span class="auth-form__socials-title">
+                            Kết nối với Facebook
+                        </span>
+                    </a>
+
+                    <a href="" class="auth-form__socials--gg btn btn--size-s btn--with-icon">
+                        <i class="auth-form__socials-icon ti-google"></i>
+                        <span class="auth-form__socials-title">
+                            Kết nối với Google
+                        </span>
+                    </a>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="modal" id="js-modal-login">
+        <div class="modal__overlay" onclick="offloginForm(), offRegisForm()">
+
+        </div> 
+
+        <div class="modal__body">
+            <!-- Login form -->
+            <form action="login.php" method="POST" role="form">
+            <div class="auth-form login js-dangnhap">
+                <div class="auth-form__container" id="form-2">
+                    <div class="auth-form__header">
+                        <h3 class="auth-form__heading">Đăng nhập</h3>
+                        <a onclick="onRegisForm()" class="auth-form__switch-btn">Đăng ký</a>
+                    </div>
+                    
+                    <div class="auth-form__form">
+                        <div class="auth-form__group">
+                            <input name="email" type="text" id="email2" class="auth-form__input" placeholder="Email">
+                            <span class="form-message"></span>
+                        </div>
+        
+                        <div class="auth-form__group">
+                            <input type="password" name="password" id="password2" class="auth-form__input" placeholder="Mật khẩu">
+                            <span class="form-message"></span>
+                        </div>
+                    </div>
+        
+                    <div class="auth-form__aside">
+                       <div class="auth-form__help">
+                           <a href="" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</a>
+                           <span class="auth-form__help-separate"></span>
+                           <a href="" class="auth-form__help-link">Cần trợ giúp</a>
+                       </div>
+                    </div>
+                    
+                    
+                        <div class="auth-form__control">
+                            <button onclick="offloginForm()" class="btn btn--normal auth-form__control-back">TRỞ LẠI</button>
+                            <button class="btn btn--primary">ĐĂNG NHẬP</button>
+                        </div>
+                    </form>
+        
+                </div>
+                <div class="auth-form__socials">
+                    <a href="" class="auth-form__socials--fb btn btn--size-s btn--with-icon">
+                        <i class="auth-form__socials-icon fab fa-facebook-square"></i>
+                        <span class="auth-form__socials-title">
+                            Kết nối với Facebook
+                        </span>
+                    </a>
+        
+                    <a href="" class="auth-form__socials--gg btn btn--size-s btn--with-icon">
+                        <i class="auth-form__socials-icon ti-google"></i>
+                        <span class="auth-form__socials-title">
+                            Kết nối với Google
+                        </span>
+                    </a>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+    <script src="./login.js"></script>
+<script src="./main.js"></script>
 </body>
 </html>
