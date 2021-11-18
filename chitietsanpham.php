@@ -1,5 +1,6 @@
 <?php 
         include 'connect.php';
+        $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -120,9 +121,9 @@
                         <li class="header__navbar-item header__navbar-item--bold">Đăng nhập</li> -->
 
                         <li class="header__navbar-item header__navbar-user">
+                            <?php if(isset($_SESSION['user'])){ ?>                        
                             <img src="https://cf.shopee.vn/file/8e289302619dfd2b67f9795e097c420f_tn" alt="" class="header__navbar-user-img">
-                            <span class="header__navbar-user-name">T.Nghia</span>
-
+                            <span class="header__navbar-user-name"><?php echo $user['email'] ?></span>
                             <ul class="header__navbar-user-menu">
                                 <li class="header__navbar-user-item">
                                     <a href="">Tài khoản của tôi</a>
@@ -134,10 +135,16 @@
                                     <a href="">Đơn mua</a>
                                 </li>
                                 <li class="header__navbar-user-item header__navbar-user-item--separate">
-                                    <a href="">Đăng xuất</a>
+                                    <a href="logout.php">Đăng xuất</a>
                                 </li>
                             </ul>
-                        </li>
+                        
+                            <?php } else { ?>
+                                <button id="js-dangnhap-btn" class="dangnhap-btn">
+                                Đăng nhập                                
+                                </button>
+                            <?php } ?>                        
+                        <li>
                      </ul>
                 </nav>
 
