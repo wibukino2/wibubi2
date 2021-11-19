@@ -193,7 +193,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
 
                     <div class="header__search">
                         <div class="header__search-input-wrap">
-                            <input type="text" id="search-item" class="header__search-input" placeholder="Tìm kiếm trong Shop">
+                            <input type="text" id="search-item" class="header__search-input" placeholder="Tìm kiếm trong Shop" onchange=searchChange()>
  
                             <!-- Search history -->
                             <div class="header__search-history">
@@ -225,7 +225,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                                 </li>
                             </ul>
                         </div>
-                        <button class="header__search-btn">
+                        <button class="header__search-btn" onclick=searchItem() >
                             <i class="header__search-btn-icon fas fa-search"></i>
                         </button>
                     </div>
