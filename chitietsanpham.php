@@ -376,7 +376,7 @@
         $sql = "select * from danhmucsp, chitietsp where danhmucsp.id=chitietsp.id and chitietsp.id='$_GET[id]' limit 1";
         $result = $conn->query($sql);
         // print_r($result);
-        while($row =$result -> fetch_assoc()){
+        while($row =$result -> fetch_assoc()){ $id = $row['id'];
             echo"  
         <div class='app__container'>
             <div class='grid wide'>
@@ -444,23 +444,44 @@
                         ".$row['thongtin']." 
                         </ul>
                     </div>
-                </div>
-                <div class='row'>
-                    <div class='product__comment'>
-                        <div class='product__comment-header'>
-                            <i class='fas fa-bars'></i>
+                </div>";}?>
+                <div class="row">
+                    <div class="product__comment">
+                        <div class="product__comment-header">
+                            <i class="fas fa-bars"></i>
                             <span>Đánh giá sản phẩm</span>
                         </div>
-                        <ul class='product-comment__list'>
-                            
-                        </ul>
+                        <?php 
+        
+        // print_r($result);
+        
+            echo"  
+                        <div class='product-comment__list'>
+                        <form action='comment.php?danhmuc=chitietsp&id=".$id."' method='POST' role='form'>
+                        <h1 id=''>Bình luận</h1>
+                        <textarea type='text' id='comment' name='comment' rows='4' cols='105' placeholder='Hãy nêu cảm nghĩ của bạn...'></textarea>
+                        
+                        <div class='product-comment__list'><input type='submit' class='button' value='Submit'></div>
+                        </form>
+                        </div>"?>
+                        <?php 
+                        $sqli = "select * from comment, nguoidung where nguoidung.id=comment.userid and comment.postid='$_GET[id]'";
+                        $result = $conn->query($sqli);
+                        while($rows =$result -> fetch_assoc()){echo" 
+                        <div class ='user-comment'>
+                            <div class ='user-img'><img class='avt' src='assets/img/qr-code.png'></div>
+                            <div class='comment-content'>
+                                <a href='#'>".$rows['hoten']."</a>
+                                <div class='content-cmt'>".$rows['content']."</div>
+                            </div>
+                        </div>
+                        ";}?>
                     </div>
+
                 </div>
             </div>
-            
-
-        </div>";}
-        ?>
+        </div>
+        
 
         <footer class='footer'>
             <div class='grid wide footer__content'>
@@ -556,119 +577,6 @@
         
     </div>
 
-    <!-- Modal lauout -->
-     <!-- <div class="modal">
-        <div class="modal__overlay">
-
-        </div> -->
-
-        <!-- <div class="modal__body"> -->
-            <!-- Register form -->
-            <!--<div class="auth-form">
-                <div class="auth-form__container">
-                    <div class="auth-form__header">
-                        <h3 class="auth-form__heading">Đăng ký</h3>
-                        <span class="auth-form__switch-btn">Đăng nhập</span>
-                    </div>
-
-                    <div class="auth-form__form">
-                        <div class="auth-form__group">
-                            <input type="text" class="auth-form__input" placeholder="Email">
-                        </div>
-
-                        <div class="auth-form__group">
-                            <input type="password" class="auth-form__input" placeholder="Mật khẩu">
-                        </div>
-                        <div class="auth-form__group">
-                            <input type="password" class="auth-form__input" placeholder="Nhập lại mật khẩu">
-                        </div>
-                    </div>
-
-                    <div class="auth-form__aside">
-                        <p class="auth-form__policy-text">
-                            Bằng việc ấn đăng ký, bạn đã đồng ý với Shopee về 
-                            <a href="" class="auth-form__text-link">Điều khoản dịch vụ </a> & 
-                            <a href="" class="auth-form__text-link">Chính sách bảo mật. </a>
-
-                        </p>
-                    </div>
-
-                    <div class="auth-form__control">
-                        <button class="btn btn--normal auth-form__control-back">TRỞ LẠI</button>
-                        <button class="btn btn--primary">ĐĂNG KÝ</button>
-                    </div>
-
-                </div>
-                <div class="auth-form__socials">
-                    <a href="" class="auth-form__socials--fb btn btn--size-s btn--with-icon">
-                        <i class="auth-form__socials-icon fab fa-facebook-square"></i>
-                        <span class="auth-form__socials-title">
-                            Kết nối với Facebook
-                        </span>
-                    </a>
-
-                    <a href="" class="auth-form__socials--gg btn btn--size-s btn--with-icon">
-                        <i class="auth-form__socials-icon ti-google"></i>
-                        <span class="auth-form__socials-title">
-                            Kết nối với Google
-                        </span>
-                    </a>
-                </div>
-
-            </div> -->
-
-            <!-- Login form -->
-            <!-- <div class="auth-form">
-                <div class="auth-form__container">
-                    <div class="auth-form__header">
-                        <h3 class="auth-form__heading">Đăng nhập</h3>
-                        <span class="auth-form__switch-btn">Đăng ký</span>
-                    </div>
-
-                    <div class="auth-form__form">
-                        <div class="auth-form__group">
-                            <input type="text" class="auth-form__input" placeholder="Email">
-                        </div>
-
-                        <div class="auth-form__group">
-                            <input type="password" class="auth-form__input" placeholder="Mật khẩu">
-                        </div>
-                    </div>
-
-                    <div class="auth-form__aside">
-                       <div class="auth-form__help">
-                           <a href="" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</a>
-                           <span class="auth-form__help-separate"></span>
-                           <a href="" class="auth-form__help-link">Cần trợ giúp</a>
-                       </div>
-                    </div>
-
-                    <div class="auth-form__control">
-                        <button class="btn btn--normal auth-form__control-back">TRỞ LẠI</button>
-                        <button class="btn btn--primary">ĐĂNG NHẬP</button>
-                    </div>
-
-                </div>
-                <div class="auth-form__socials">
-                    <a href="" class="auth-form__socials--fb btn btn--size-s btn--with-icon">
-                        <i class="auth-form__socials-icon fab fa-facebook-square"></i>
-                        <span class="auth-form__socials-title">
-                            Kết nối với Facebook
-                        </span>
-                    </a>
-
-                    <a href="" class="auth-form__socials--gg btn btn--size-s btn--with-icon">
-                        <i class="auth-form__socials-icon ti-google"></i>
-                        <span class="auth-form__socials-title">
-                            Kết nối với Google
-                        </span>
-                    </a>
-                </div>
-
-            </div>
-
-        </div>
-    </div> -->
     <div class="modal" id="js-modal-regis">
         <div class="modal__overlay" onclick="offloginForm(), offRegisForm()">
 
