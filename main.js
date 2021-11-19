@@ -35,9 +35,7 @@ Array.from(filter_btn).forEach(function (element) {
 })
 
 //search
-// const element_product = document.querySelectorAll('.product-all')
-// const search_item = document.getElementById('search-item')
-    search_item.addEventListener('keyup', searchItem)
+
     function searchItem(){
         // chuyển thành viết thường
         let valueItem = search_item.value.toLowerCase();
@@ -53,6 +51,13 @@ Array.from(filter_btn).forEach(function (element) {
             }
         })
         checkEmpty(element_product);
+    }
+    function searchChange(){
+        if (search_item.value == ''){
+            Array.from(element_product).forEach(e => {
+                e.style.display = 'block';
+            })
+        }
     }
 
     function checkEmpty(element){
