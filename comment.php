@@ -18,6 +18,10 @@ if(isset($_POST['comment'])){
           } else {
             echo "504 Error";
           }
-    } else echo"Bạn chưa đăng nhập";
+    } else {
+        $message = "Bạn chưa đăng nhập";
+echo "<script type='text/javascript'>alert('$message');</script>";
+        header( "refresh:1;url=index.php" );
+    }
 }
 ?>

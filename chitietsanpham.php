@@ -681,15 +681,12 @@
                            <span class="auth-form__help-separate"></span>
                            <a href="" class="auth-form__help-link">Cần trợ giúp</a>
                        </div>
-                    </div>
-                    
-                    
+                    </div>                 
                         <div class="auth-form__control">
                             <button onclick="offloginForm()" class="btn btn--normal auth-form__control-back">TRỞ LẠI</button>
                             <button class="btn btn--primary">ĐĂNG NHẬP</button>
                         </div>
                     </form>
-        
                 </div>
                 <div class="auth-form__socials">
                     <a href="" class="auth-form__socials--fb btn btn--size-s btn--with-icon">
@@ -698,7 +695,6 @@
                             Kết nối với Facebook
                         </span>
                     </a>
-        
                     <a href="" class="auth-form__socials--gg btn btn--size-s btn--with-icon">
                         <i class="auth-form__socials-icon ti-google"></i>
                         <span class="auth-form__socials-title">
