@@ -1,5 +1,6 @@
 <?php
 include 'connect.php';
+include 'loading.php';
 if(isset($_POST['comment'])){
     $cmt = $_POST['comment'];
     if(isset($_SESSION['user'])){
@@ -12,9 +13,10 @@ if(isset($_POST['comment'])){
         $userid = mysqli_fetch_assoc($result);
         $userid=$userid['id'];
         $sql="insert into comment (userid,postid,content) values('$userid','$postid','$cmt')";
-        var_dump($postid);
         if ($conn->query($sql) === TRUE) {
-            header('location: index.php');
+          $message = "Đăng bình luận thành công";
+          echo "<script type='text/javascript'>alert('$message');</script>";
+          header( "refresh:1;url=chitietsanpham.php?danhmuc=chitietsp&id=$postid" );
           } else {
             echo "504 Error";
           }
