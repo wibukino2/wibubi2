@@ -379,7 +379,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
         <div class="app__container">
             <div class="grid wide">
                 <div class="row sm-gutter app__content">
-                    <div class="col l-2 m-0 c-0">
+                    <div class="col l-2 m-0 c-0" style="position:relative">
                         <nav class="category">
                             <h3 class="category__heading">Danh mục
                             </h3>
@@ -398,9 +398,13 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                                     <a class="category-item__link">Phụ kiện</a>
                                 </li>
                             </ul>
+                            <button class="btnDemo" id="btnDemo" onclick="btnDemo()">
+                                Demo
+                            </button>
+
                         </nav>
                     </div>
-    
+                                
                     <div class="col l-10 m-12 c-12 ">
                         <div class="home-filter hide-on-mobile-tablet">
                             <span class="home-filter__lable">Sắp xếp theo</span>
@@ -1453,8 +1457,11 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                             </li>
                         </ul>
                     </div>
+
                 </div>
+
             </div>
+            
         </div>
 
         <footer class="footer">
@@ -1501,6 +1508,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                                 <a href="" class="footer-item__link">Sản phẩm nhập khẩu</a>
                             </li>
                         </ul>
+                        
                     </div>
                     <div class="col l-2-4 m-4 c-6 footer__row-space">
                         <h3 class="footer__heading">Theo dõi</h3>
@@ -1539,7 +1547,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                             </div>
                         </div>
                     </div>
-
+                
                 </div>
             </div>
             <div class="footer__bottom">
@@ -1549,6 +1557,18 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
             </div>
         </footer>
         
+    </div>
+
+    <div class="videoDemo modal" id="videoDemo">
+        <div class="modal__overlay" onclick="offVideoDemo()">
+
+        </div> 
+
+        <div class="modal__body">
+            <div class="webDemo">
+                
+            </div>
+        </div>
     </div>
     <!-- Modal lauout -->
     <div class="modal" id="js-modal-regis">
@@ -1723,7 +1743,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
             }
         });
         </script>
-<script src="./login.js"></script>
-<script src="./main.js"></script>
+    <script src="./login.js"></script>
+    <script src="./main.js"></script>
 </body>
 </html>

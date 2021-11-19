@@ -75,3 +75,21 @@ Array.from(filter_btn).forEach(function (element) {
         }
     }
 
+//demo
+    
+    function btnDemo(){
+        document.getElementById("videoDemo").classList.add("open")
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/azE1bLGueJY';
+        iframe.width = "100%"
+        iframe.height = "100%"
+        iframe.id = "videoId"
+        document.querySelector('.webDemo').appendChild(iframe);
+    }
+    function offVideoDemo(){
+        var iframe = document.getElementById('videoId')
+        document.getElementById("videoDemo").classList.remove("open")
+        document.querySelector('.webDemo').removeChild(iframe)
+
+    }
+    
