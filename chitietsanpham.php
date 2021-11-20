@@ -425,7 +425,7 @@
                                 </div>
                                 <div class='order-status'>Còn trong kho: n</div>
                                 <div class='order-btn'>
-                                    <div class='btn btn--primary'>THÊM VÀO GIỎ</div>
+                                    <div class='btn btn--primary' onclick=addProduct()>THÊM VÀO GIỎ</div>
                                     <div class='btn btn--primary'>MUA NGAY</div>
                                 </div>
                                 
@@ -708,5 +708,6 @@
     </div>
     <script src="./login.js"></script>
 <script src="./main.js"></script>
+<script src="./chitietsanpham.js"></script>
 </body>
 </html>

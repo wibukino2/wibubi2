@@ -1553,16 +1553,9 @@ i.home-product-item__like-icon-fill{
     margin-bottom: 20px;
 }
 
-
+.inputCart,
 .videoDemo{
     position: absolute;
-    /* top: 400px;
-    left: 50px; */
-    /* width: 200px;
-    height: 200px; */
-}
-
-.videoDemo{
     z-index: 101;
     display: none;
 }
