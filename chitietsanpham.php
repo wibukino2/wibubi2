@@ -229,11 +229,18 @@
 
                     <!-- Cart -->
                     <div class="header__cart">
+                        
                         <div class="header__cart-wrap">
                             <i class="header__cart-icon fas fa-shopping-cart"></i>
-                            <span class="header__cart-notice">3</span>
-
-                            <!-- No cart : header__cart-list--no-cart -->
+                            <?php
+                            $sqlCartCount = "select count(*) AS 'SL' from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
+                            $resultCartCount = $conn->query($sqlCartCount);
+                            while($rowCartCount = $resultCartCount -> fetch_assoc()){
+                            echo "
+                                <span class='header__cart-notice'>".$rowCartCount['SL']."</span>
+                                "
+                            ;}
+                            ?>
                             <div class="header__cart-list ">
                                 <img src="./assets/img/pngtree-add-shopping-cart-icon-png-image_4436011.jpg" class="header__cart--no-cart-img" alt="">
                                 <span class="header__cart-list-msg">
@@ -241,116 +248,41 @@
                                 </span>
 
                                 <h4 class="header__cart-heading">Sản phẩm đã thêm</h4>
-                                <ul class="header__cart-list-item">
-                                    <!-- cart item, -->
-                                    <li class="header__cart-item">
-                                        <img src="./assets/img/product/2.jfif" alt="" class="header__cart-img">
-                                        <div class="header__cart-item-info">
-                                            <div class="header__cart-item-head">
-                                                <h5 class="header__cart-item-name">Bộ sản phẩm skincare</h5>
-                                                <div class="header__cart-item-price-wrap">
-                                                    <span class="header__cart-item-price">2.000.000đ</span>
-                                                    <span class="header__cart-item-mutiply">x</span>
-                                                    <span class="header__cart-item-qnt">2</span>
+                                <?php
+                                $sqlCart = "select *from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
+                                $resultCart = $conn->query($sqlCart);
+                                while($rowCart = $resultCart -> fetch_assoc()){
+                                echo "
+                                    <ul class='header__cart-list-item'>
+                                        <!-- cart item, -->
+                                        <li class='header__cart-item'>
+                                            <img src='".$rowCart['anh']."' alt='' class='header__cart-img'>
+                                            <div class='header__cart-item-info'>
+                                                <div class='header__cart-item-head'>
+                                                    <h5 class='header__cart-item-name'>".$rowCart['tensp']."</h5>
+                                                    <div class='header__cart-item-price-wrap'>
+                                                        <span class='header__cart-item-price'>".number_format($rowCart['giagiam'],0,',','.')."đ</span>
+                                                        <span class='header__cart-item-mutiply'>x</span>
+                                                        <span class='header__cart-item-qnt'>".$rowCart['count']."</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class='header__cart-item-body'>
+                                                    <span class='header__cart-item-desc'>
+                                                        Phân loại:Real
+                                                    </span>
+                                                    <span class='header__cart-item-remove'>Xóa</span>
                                                 </div>
                                             </div>
-
-                                            <div class="header__cart-item-body">
-                                                <span class="header__cart-item-desc">
-                                                    Phân loại: Bạc
-                                                </span>
-                                                <span class="header__cart-item-remove">Xóa</span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="header__cart-item">
-                                        <img src="./assets/img/product/3.jfif" alt="" class="header__cart-img">
-                                        <div class="header__cart-item-info">
-                                            <div class="header__cart-item-head">
-                                                <h5 class="header__cart-item-name">Bộ sản phẩm skincare</h5>
-                                                <div class="header__cart-item-price-wrap">
-                                                    <span class="header__cart-item-price">2.000.000đ</span>
-                                                    <span class="header__cart-item-mutiply">x</span>
-                                                    <span class="header__cart-item-qnt">2</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="header__cart-item-body">
-                                                <span class="header__cart-item-desc">
-                                                    Phân loại: Bạc
-                                                </span>
-                                                <span class="header__cart-item-remove">Xóa</span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="header__cart-item">
-                                        <img src="./assets/img/product/4.jfif" alt="" class="header__cart-img">
-                                        <div class="header__cart-item-info">
-                                            <div class="header__cart-item-head">
-                                                <h5 class="header__cart-item-name">Bộ sản phẩm skincare</h5>
-                                                <div class="header__cart-item-price-wrap">
-                                                    <span class="header__cart-item-price">2.000.000đ</span>
-                                                    <span class="header__cart-item-mutiply">x</span>
-                                                    <span class="header__cart-item-qnt">2</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="header__cart-item-body">
-                                                <span class="header__cart-item-desc">
-                                                    Phân loại: Bạc
-                                                </span>
-                                                <span class="header__cart-item-remove">Xóa</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="header__cart-item">
-                                        <img src="./assets/img/product/4.jfif" alt="" class="header__cart-img">
-                                        <div class="header__cart-item-info">
-                                            <div class="header__cart-item-head">
-                                                <h5 class="header__cart-item-name">Bộ sản phẩm skincare</h5>
-                                                <div class="header__cart-item-price-wrap">
-                                                    <span class="header__cart-item-price">2.000.000đ</span>
-                                                    <span class="header__cart-item-mutiply">x</span>
-                                                    <span class="header__cart-item-qnt">2</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="header__cart-item-body">
-                                                <span class="header__cart-item-desc">
-                                                    Phân loại: Bạc
-                                                </span>
-                                                <span class="header__cart-item-remove">Xóa</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="header__cart-item">
-                                        <img src="./assets/img/product/4.jfif" alt="" class="header__cart-img">
-                                        <div class="header__cart-item-info">
-                                            <div class="header__cart-item-head">
-                                                <h5 class="header__cart-item-name">Bộ sản phẩm skincare</h5>
-                                                <div class="header__cart-item-price-wrap">
-                                                    <span class="header__cart-item-price">2.000.000đ</span>
-                                                    <span class="header__cart-item-mutiply">x</span>
-                                                    <span class="header__cart-item-qnt">2</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="header__cart-item-body">
-                                                <span class="header__cart-item-desc">
-                                                    Phân loại: Bạc
-                                                </span>
-                                                <span class="header__cart-item-remove">Xóa</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                        </li>
+                                    </ul>
+                                ";}
+                                
+                                ?>
                                 <a href="#" class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</a>
                             </div>
                         </div>
                     </div>
-
                 </div>
 
             </div>
@@ -418,17 +350,20 @@
                                 </div>
                             </div>
                             <div class='main__product-order'>
-                                <div class='order-quantity'>
-                                    <button class='quantity__minus'>-</button>
-                                    <input type='number' class='quantity__number'>
-                                    <button class='quantity__plus'>+</button>
-                                </div>
-                                <div class='order-status'>Còn trong kho: n</div>
-                                <div class='order-btn'>
-                                    <div class='btn btn--primary' onclick=addProduct()>THÊM VÀO GIỎ</div>
-                                    <div class='btn btn--primary'>MUA NGAY</div>
-                                </div>
-                                
+                                <form action='cartpost.php?danhmuc=chitietsp&id=".$id."' method='POST' role='form'>
+                                    <div class='order-quantity'>
+                                        <div class='quantity__minus'>-</div>
+                                        <input type='number' class='quantity__number' name='count'>
+                                        <div class='quantity__plus'>+</div>
+                                    </div>
+                                    <div class='order-status'>Còn trong kho: n</div>
+                                    <div class='order-btn'>
+                                        <div class='order-btn__addCart'>
+                                            <input type='submit' class='btn btn--primary' value='THÊM VÀO GIỎ'></input>
+                                        </div>
+                                        <div class='btn btn--primary'>MUA NGAY</div>
+                                    </div>                                            
+                                </form>
                             </div>
                         </div>
                     

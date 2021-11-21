@@ -58,6 +58,15 @@
     border-radius: 3px;
     overflow: hidden;
 }
+.order-btn{
+    display: inline-flex;
+}
+.btn .btn--primary{
+    display: block;
+}
+.order-btn__addCart{
+    margin-right: 50px;
+}
 .quantity__plus,
 .quantity__minus{
     display: inline-block;

@@ -234,7 +234,15 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                     <div class="header__cart">
                         <div class="header__cart-wrap">
                             <i class="header__cart-icon fas fa-shopping-cart"></i>
-                            <span class="header__cart-notice">3</span>
+                            <?php
+                            $sqlCartCount = "select count(*) AS 'SL' from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
+                            $resultCartCount = $conn->query($sqlCartCount);
+                            while($rowCartCount = $resultCartCount -> fetch_assoc()){
+                            echo "
+                                <span class='header__cart-notice'>".$rowCartCount['SL']."</span>
+                                "
+                            ;}
+                            ?>
 
                             <!-- No cart : header__cart-list--no-cart -->
                             <div class="header__cart-list ">
@@ -244,111 +252,37 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                                 </span>
 
                                 <h4 class="header__cart-heading">Sản phẩm đã thêm</h4>
-                                <ul class="header__cart-list-item">
-                                    <!-- cart item, -->
-                                    <li class="header__cart-item">
-                                        <img src="./assets/img/product/2.jfif" alt="" class="header__cart-img">
-                                        <div class="header__cart-item-info">
-                                            <div class="header__cart-item-head">
-                                                <h5 class="header__cart-item-name">Mô hình figure: Konjiki yami Yukata</h5>
-                                                <div class="header__cart-item-price-wrap">
-                                                    <span class="header__cart-item-price">550.000đ</span>
-                                                    <span class="header__cart-item-mutiply">x</span>
-                                                    <span class="header__cart-item-qnt">2</span>
+                                <?php 
+
+                                $sqlCart = "select *from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
+                                $resultCart = $conn->query($sqlCart);
+                                while($rowCart = $resultCart -> fetch_assoc()){
+                                echo "
+                                    <ul class='header__cart-list-item'>
+                                        <!-- cart item, -->
+                                        <li class='header__cart-item'>
+                                            <img src='".$rowCart['anh']."' alt='' class='header__cart-img'>
+                                            <div class='header__cart-item-info'>
+                                                <div class='header__cart-item-head'>
+                                                    <h5 class='header__cart-item-name'>".$rowCart['tensp']."</h5>
+                                                    <div class='header__cart-item-price-wrap'>
+                                                        <span class='header__cart-item-price'>".number_format($rowCart['giagiam'],0,',','.')."đ</span>
+                                                        <span class='header__cart-item-mutiply'>x</span>
+                                                        <span class='header__cart-item-qnt'>".$rowCart['count']."</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class='header__cart-item-body'>
+                                                    <span class='header__cart-item-desc'>
+                                                        Phân loại:Real
+                                                    </span>
+                                                    <span class='header__cart-item-remove'>Xóa</span>
                                                 </div>
                                             </div>
-
-                                            <div class="header__cart-item-body">
-                                                <span class="header__cart-item-desc">
-                                                    Phân loại:Real
-                                                </span>
-                                                <span class="header__cart-item-remove">Xóa</span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="header__cart-item">
-                                        <img src="./assets/img/product/3.jfif" alt="" class="header__cart-img">
-                                        <div class="header__cart-item-info">
-                                            <div class="header__cart-item-head">
-                                                <h5 class="header__cart-item-name">Mô hình figure: Rem chính hãng</h5>
-                                                <div class="header__cart-item-price-wrap">
-                                                    <span class="header__cart-item-price">6.999.000đ</span>
-                                                    <span class="header__cart-item-mutiply">x</span>
-                                                    <span class="header__cart-item-qnt">2</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="header__cart-item-body">
-                                                <span class="header__cart-item-desc">
-                                                    Phân loại:Real
-                                                </span>
-                                                <span class="header__cart-item-remove">Xóa</span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="header__cart-item">
-                                        <img src="./assets/img/product/4.jfif" alt="" class="header__cart-img">
-                                        <div class="header__cart-item-info">
-                                            <div class="header__cart-item-head">
-                                                <h5 class="header__cart-item-name">[Mihoyo] Mô hình nhân vật Honkai Impact 3rd Rita Rossweisse </h5>
-                                                <div class="header__cart-item-price-wrap">
-                                                    <span class="header__cart-item-price">3.390.000đ</span>
-                                                    <span class="header__cart-item-mutiply">x</span>
-                                                    <span class="header__cart-item-qnt">2</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="header__cart-item-body">
-                                                <span class="header__cart-item-desc">
-                                                    Phân loại: Real
-                                                </span>
-                                                <span class="header__cart-item-remove">Xóa</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="header__cart-item">
-                                        <img src="./assets/img/product/4.jfif" alt="" class="header__cart-img">
-                                        <div class="header__cart-item-info">
-                                            <div class="header__cart-item-head">
-                                                <h5 class="header__cart-item-name">[Mihoyo] Mô hình nhân vật Honkai Impact 3rd Rita Rossweisse </h5>
-                                                <div class="header__cart-item-price-wrap">
-                                                    <span class="header__cart-item-price">3.390.000đ</span>
-                                                    <span class="header__cart-item-mutiply">x</span>
-                                                    <span class="header__cart-item-qnt">2</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="header__cart-item-body">
-                                                <span class="header__cart-item-desc">
-                                                    Phân loại:Real
-                                                </span>
-                                                <span class="header__cart-item-remove">Xóa</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="header__cart-item">
-                                        <img src="./assets/img/product/4.jfif" alt="" class="header__cart-img">
-                                        <div class="header__cart-item-info">
-                                            <div class="header__cart-item-head">
-                                                <h5 class="header__cart-item-name">[Mihoyo] Mô hình nhân vật Honkai Impact 3rd Rita Rossweisse </h5>
-                                                <div class="header__cart-item-price-wrap">
-                                                    <span class="header__cart-item-price">3.390.000đ</span>
-                                                    <span class="header__cart-item-mutiply">x</span>
-                                                    <span class="header__cart-item-qnt">2</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="header__cart-item-body">
-                                                <span class="header__cart-item-desc">
-                                                    Phân loại:Real
-                                                </span>
-                                                <span class="header__cart-item-remove">Xóa</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                        </li>
+                                    </ul>
+                                ";}
+                                ?>
                                 <a href="#" class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</a>
                             </div>
                         </div>
