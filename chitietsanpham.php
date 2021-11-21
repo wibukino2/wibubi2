@@ -230,7 +230,7 @@
                     <!-- Cart -->
                     <div class="header__cart">
                         
-                        <div class="header__cart-wrap">
+                        <div class="header__cart-wrap" onClick=openCartList()>
                             <i class="header__cart-icon fas fa-shopping-cart"></i>
                             <?php
                             $sqlCartCount = "select count(*) AS 'SL' from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
@@ -279,7 +279,7 @@
                                 ";}
                                 
                                 ?>
-                                <a href="#" class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</a>
+                                <a onclick=openCartList() class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</a>
                             </div>
                         </div>
                     </div>
@@ -353,7 +353,7 @@
                                 <form action='cartpost.php?danhmuc=chitietsp&id=".$id."' method='POST' role='form'>
                                     <div class='order-quantity'>
                                         <div class='quantity__minus'>-</div>
-                                        <input type='number' class='quantity__number' name='count'>
+                                        <input type='number' class='quantity__number' name='count' min='1'>
                                         <div class='quantity__plus'>+</div>
                                     </div>
                                     <div class='order-status'>Còn trong kho: n</div>
@@ -511,6 +511,52 @@
         </footer>
         
     </div>
+
+
+<!-- Cart Item  -->
+    <div class="cartItem modal" id="cartItem">
+            <div class="modal__overlay" onclick="closeCartList()">
+
+            </div> 
+
+            <div class="modal__body">
+                <div class="itemList">
+                    <h1 class='itemList__header'>Danh sách sản phẩm trong giỏ hàng</h1>
+                    <?php
+                        $sqlCart = "select *from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
+                        $resultCart = $conn->query($sqlCart);
+                        while($rowCart = $resultCart -> fetch_assoc()){
+                        echo "
+                        <ul class='header__cart-list-item'>
+                            <li class='header__cart-item'>
+                                    <input type='checkbox' class='header__cart-checkbox'></input>
+                                    <img src='".$rowCart['anh']."' alt='' class='header__cart-img'>
+                                    <div class='header__cart-item-info'>
+                                        <div class='header__cart-item-head'>
+                                            <h5 class='header__cart-item-name'>".$rowCart['tensp']."</h5>
+                                            <div class='header__cart-item-price-wrap'>
+                                                <span class='header__cart-item-price'>".number_format($rowCart['giagiam'],0,',','.')."đ</span>
+                                                <span class='header__cart-item-mutiply'>x</span>
+                                                <span class='header__cart-item-qnt'>".$rowCart['count']."</span>
+                                            </div>
+                                        </div>
+
+                                        <div class='header__cart-item-body'>
+                                            <span class='header__cart-item-desc'>
+                                                Phân loại:Real
+                                            </span>
+                                            <span class='header__cart-item-remove'>Xóa</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        ";}
+                        
+                    ?>
+                </div>
+            </div>
+    </div>
+
 
     <div class="modal" id="js-modal-regis">
         <div class="modal__overlay" onclick="offloginForm(), offRegisForm()">

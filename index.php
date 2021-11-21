@@ -235,14 +235,16 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                         <div class="header__cart-wrap">
                             <i class="header__cart-icon fas fa-shopping-cart"></i>
                             <?php
-                            $sqlCartCount = "select count(*) AS 'SL' from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
-                            $resultCartCount = $conn->query($sqlCartCount);
-                            while($rowCartCount = $resultCartCount -> fetch_assoc()){
-                            echo "
-                                <span class='header__cart-notice'>".$rowCartCount['SL']."</span>
-                                "
-                            ;}
-                            ?>
+                            if(isset($_SESSION['user'])){
+                                $sqlCartCount = "select count(*) AS 'SL' from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
+                                $resultCartCount = $conn->query($sqlCartCount);
+                                while($rowCartCount = $resultCartCount -> fetch_assoc()){
+                                echo "
+                                    <span class='header__cart-notice'>".$rowCartCount['SL']."</span>
+                                    "
+                                ;}
+                            }
+                                ?>
 
                             <!-- No cart : header__cart-list--no-cart -->
                             <div class="header__cart-list ">
@@ -252,37 +254,41 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                                 </span>
 
                                 <h4 class="header__cart-heading">Sản phẩm đã thêm</h4>
-                                <?php 
 
-                                $sqlCart = "select *from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
-                                $resultCart = $conn->query($sqlCart);
-                                while($rowCart = $resultCart -> fetch_assoc()){
-                                echo "
-                                    <ul class='header__cart-list-item'>
-                                        <!-- cart item, -->
-                                        <li class='header__cart-item'>
-                                            <img src='".$rowCart['anh']."' alt='' class='header__cart-img'>
-                                            <div class='header__cart-item-info'>
-                                                <div class='header__cart-item-head'>
-                                                    <h5 class='header__cart-item-name'>".$rowCart['tensp']."</h5>
-                                                    <div class='header__cart-item-price-wrap'>
-                                                        <span class='header__cart-item-price'>".number_format($rowCart['giagiam'],0,',','.')."đ</span>
-                                                        <span class='header__cart-item-mutiply'>x</span>
-                                                        <span class='header__cart-item-qnt'>".$rowCart['count']."</span>
+                                
+                                <?php 
+                                if(isset($_SESSION['user'])){
+
+                                    $sqlCart = "select *from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
+                                    $resultCart = $conn->query($sqlCart);
+                                    while($rowCart = $resultCart -> fetch_assoc()){
+                                    echo "
+                                        <ul class='header__cart-list-item'>
+                                            <!-- cart item, -->
+                                            <li class='header__cart-item'>
+                                                <img src='".$rowCart['anh']."' alt='' class='header__cart-img'>
+                                                <div class='header__cart-item-info'>
+                                                    <div class='header__cart-item-head'>
+                                                        <h5 class='header__cart-item-name'>".$rowCart['tensp']."</h5>
+                                                        <div class='header__cart-item-price-wrap'>
+                                                            <span class='header__cart-item-price'>".number_format($rowCart['giagiam'],0,',','.')."đ</span>
+                                                            <span class='header__cart-item-mutiply'>x</span>
+                                                            <span class='header__cart-item-qnt'>".$rowCart['count']."</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class='header__cart-item-body'>
+                                                        <span class='header__cart-item-desc'>
+                                                            Phân loại:Real
+                                                        </span>
+                                                        <span class='header__cart-item-remove'>Xóa</span>
                                                     </div>
                                                 </div>
-
-                                                <div class='header__cart-item-body'>
-                                                    <span class='header__cart-item-desc'>
-                                                        Phân loại:Real
-                                                    </span>
-                                                    <span class='header__cart-item-remove'>Xóa</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                ";}
-                                ?>
+                                            </li>
+                                        </ul>
+                                    ";}
+                                }
+                                    ?>
                                 <a href="#" class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</a>
                             </div>
                         </div>
@@ -333,7 +339,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                                 </li>
                             </ul>
                             <button class="btnDemo" id="btnDemo" onclick="btnDemo()">
-                                Demo
+                                <h3>Demo Wjpuki</h3>
                             </button>
 
                         </nav>
