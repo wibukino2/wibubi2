@@ -1,6 +1,7 @@
 .admin-head{
     display:inline-block;
     top:0;
+    
 }
 .active-item{
     display: none;
