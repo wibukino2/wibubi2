@@ -51,8 +51,8 @@
                                 <i class="header__navbar-icon fab fa-instagram"></i>
                             </a>
                         </li>
-                     </ul>
-                     <ul class="header__navbar-list">
+                    </ul>
+                    <ul class="header__navbar-list">
                         <li class="header__navbar-item header__navbar-item--has-noti">
                             <a href="" class="header__navbar-item-link ">
                                 <i class="header__navbar-icon far fa-bell"></i>
@@ -230,9 +230,10 @@
                     <!-- Cart -->
                     <div class="header__cart">
                         
-                        <div class="header__cart-wrap" onClick=openCartList()>
+                        <div class="header__cart-wrap" onclick='openCartList()'>
                             <i class="header__cart-icon fas fa-shopping-cart"></i>
                             <?php
+                            if(isset($_SESSION['user'])){
                             $sqlCartCount = "select count(*) AS 'SL' from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
                             $resultCartCount = $conn->query($sqlCartCount);
                             while($rowCartCount = $resultCartCount -> fetch_assoc()){
@@ -240,6 +241,7 @@
                                 <span class='header__cart-notice'>".$rowCartCount['SL']."</span>
                                 "
                             ;}
+                            }
                             ?>
                             <div class="header__cart-list ">
                                 <img src="./assets/img/pngtree-add-shopping-cart-icon-png-image_4436011.jpg" class="header__cart--no-cart-img" alt="">
@@ -249,6 +251,7 @@
 
                                 <h4 class="header__cart-heading">Sản phẩm đã thêm</h4>
                                 <?php
+                                if(isset($_SESSION['user'])){
                                 $sqlCart = "select *from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
                                 $resultCart = $conn->query($sqlCart);
                                 while($rowCart = $resultCart -> fetch_assoc()){
@@ -277,7 +280,7 @@
                                         </li>
                                     </ul>
                                 ";}
-                                
+                                }
                                 ?>
                                 <a onclick=openCartList() class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</a>
                             </div>
@@ -353,7 +356,7 @@
                                 <form action='cartpost.php?danhmuc=chitietsp&id=".$id."' method='POST' role='form'>
                                     <div class='order-quantity'>
                                         <div class='quantity__minus'>-</div>
-                                        <input type='number' class='quantity__number' name='count' min='1'>
+                                        <input type='number' class='quantity__number' name='count' min='1' value='1'>
                                         <div class='quantity__plus'>+</div>
                                     </div>
                                     <div class='order-status'>Còn trong kho: n</div>
@@ -657,11 +660,11 @@
                     </div>
         
                     <div class="auth-form__aside">
-                       <div class="auth-form__help">
-                           <a href="" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</a>
-                           <span class="auth-form__help-separate"></span>
-                           <a href="" class="auth-form__help-link">Cần trợ giúp</a>
-                       </div>
+                        <div class="auth-form__help">
+                            <a href="" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</a>
+                            <span class="auth-form__help-separate"></span>
+                            <a href="" class="auth-form__help-link">Cần trợ giúp</a>
+                        </div>
                     </div>                 
                         <div class="auth-form__control">
                             <button onclick="offloginForm()" class="btn btn--normal auth-form__control-back">TRỞ LẠI</button>

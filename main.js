@@ -93,7 +93,6 @@ Array.from(filter_btn).forEach(function (element) {
 
     }
 
-//cart
     function openCartList() {
         document.getElementById("cartItem").classList.add("open")
     }

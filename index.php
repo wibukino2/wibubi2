@@ -232,21 +232,20 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
 
                     <!-- Cart -->
                     <div class="header__cart">
-                        <div class="header__cart-wrap">
+                        
+                        <div class="header__cart-wrap" onclick='openCartList()'>
                             <i class="header__cart-icon fas fa-shopping-cart"></i>
                             <?php
                             if(isset($_SESSION['user'])){
-                                $sqlCartCount = "select count(*) AS 'SL' from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
-                                $resultCartCount = $conn->query($sqlCartCount);
-                                while($rowCartCount = $resultCartCount -> fetch_assoc()){
-                                echo "
-                                    <span class='header__cart-notice'>".$rowCartCount['SL']."</span>
-                                    "
-                                ;}
+                            $sqlCartCount = "select count(*) AS 'SL' from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
+                            $resultCartCount = $conn->query($sqlCartCount);
+                            while($rowCartCount = $resultCartCount -> fetch_assoc()){
+                            echo "
+                                <span class='header__cart-notice'>".$rowCartCount['SL']."</span>
+                                "
+                            ;}
                             }
-                                ?>
-
-                            <!-- No cart : header__cart-list--no-cart -->
+                            ?>
                             <div class="header__cart-list ">
                                 <img src="./assets/img/pngtree-add-shopping-cart-icon-png-image_4436011.jpg" class="header__cart--no-cart-img" alt="">
                                 <span class="header__cart-list-msg">
@@ -254,42 +253,39 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                                 </span>
 
                                 <h4 class="header__cart-heading">Sản phẩm đã thêm</h4>
-
-                                
-                                <?php 
+                                <?php
                                 if(isset($_SESSION['user'])){
-
-                                    $sqlCart = "select *from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
-                                    $resultCart = $conn->query($sqlCart);
-                                    while($rowCart = $resultCart -> fetch_assoc()){
-                                    echo "
-                                        <ul class='header__cart-list-item'>
-                                            <!-- cart item, -->
-                                            <li class='header__cart-item'>
-                                                <img src='".$rowCart['anh']."' alt='' class='header__cart-img'>
-                                                <div class='header__cart-item-info'>
-                                                    <div class='header__cart-item-head'>
-                                                        <h5 class='header__cart-item-name'>".$rowCart['tensp']."</h5>
-                                                        <div class='header__cart-item-price-wrap'>
-                                                            <span class='header__cart-item-price'>".number_format($rowCart['giagiam'],0,',','.')."đ</span>
-                                                            <span class='header__cart-item-mutiply'>x</span>
-                                                            <span class='header__cart-item-qnt'>".$rowCart['count']."</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class='header__cart-item-body'>
-                                                        <span class='header__cart-item-desc'>
-                                                            Phân loại:Real
-                                                        </span>
-                                                        <span class='header__cart-item-remove'>Xóa</span>
+                                $sqlCart = "select *from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
+                                $resultCart = $conn->query($sqlCart);
+                                while($rowCart = $resultCart -> fetch_assoc()){
+                                echo "
+                                    <ul class='header__cart-list-item'>
+                                        <!-- cart item, -->
+                                        <li class='header__cart-item'>
+                                            <img src='".$rowCart['anh']."' alt='' class='header__cart-img'>
+                                            <div class='header__cart-item-info'>
+                                                <div class='header__cart-item-head'>
+                                                    <h5 class='header__cart-item-name'>".$rowCart['tensp']."</h5>
+                                                    <div class='header__cart-item-price-wrap'>
+                                                        <span class='header__cart-item-price'>".number_format($rowCart['giagiam'],0,',','.')."đ</span>
+                                                        <span class='header__cart-item-mutiply'>x</span>
+                                                        <span class='header__cart-item-qnt'>".$rowCart['count']."</span>
                                                     </div>
                                                 </div>
-                                            </li>
-                                        </ul>
-                                    ";}
+
+                                                <div class='header__cart-item-body'>
+                                                    <span class='header__cart-item-desc'>
+                                                        Phân loại:Real
+                                                    </span>
+                                                    <span class='header__cart-item-remove'>Xóa</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                ";}
                                 }
-                                    ?>
-                                <a href="#" class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</a>
+                                ?>
+                                <a onclick=openCartList() class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</a>
                             </div>
                         </div>
                     </div>
@@ -1499,6 +1495,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
         
     </div>
 
+    
     <div class="videoDemo modal" id="videoDemo">
         <div class="modal__overlay" onclick="offVideoDemo()">
 
@@ -1643,6 +1640,50 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
         
             </div>
         </div>
+    </div>
+
+    <!-- Cart Item  -->
+    <div class="cartItem modal" id="cartItem">
+            <div class="modal__overlay" onclick="closeCartList()">
+
+            </div> 
+ 
+            <div class="modal__body">
+                <div class="itemList">
+                    <h1 class='itemList__header'>Danh sách sản phẩm trong giỏ hàng</h1>
+                    <?php
+                        $sqlCart = "select *from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
+                        $resultCart = $conn->query($sqlCart);
+                        while($rowCart = $resultCart -> fetch_assoc()){
+                        echo "
+                        <ul class='header__cart-list-item'>
+                            <li class='header__cart-item'>
+                                    <input type='checkbox' class='header__cart-checkbox'></input>
+                                    <img src='".$rowCart['anh']."' alt='' class='header__cart-img'>
+                                    <div class='header__cart-item-info'>
+                                        <div class='header__cart-item-head'>
+                                            <h5 class='header__cart-item-name'>".$rowCart['tensp']."</h5>
+                                            <div class='header__cart-item-price-wrap'>
+                                                <span class='header__cart-item-price'>".number_format($rowCart['giagiam'],0,',','.')."đ</span>
+                                                <span class='header__cart-item-mutiply'>x</span>
+                                                <span class='header__cart-item-qnt'>".$rowCart['count']."</span>
+                                            </div>
+                                        </div>
+
+                                        <div class='header__cart-item-body'>
+                                            <span class='header__cart-item-desc'>
+                                                Phân loại:Real
+                                            </span>
+                                            <span class='header__cart-item-remove'>Xóa</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        ";}
+                        
+                    ?>
+                </div>
+            </div>
     </div>
 
     <script src="./dn.js"></script>
