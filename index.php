@@ -340,7 +340,6 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                             <button class="btnRexlax" id="btnRelax" onclick="btnRelax()">
                                 <h3>Relax <br> Music</h3>
                             </button>
-
                         </nav>
                     </div>
                                 
