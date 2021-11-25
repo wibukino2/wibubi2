@@ -100,3 +100,7 @@ Array.from(filter_btn).forEach(function (element) {
         document.getElementById("cartItem").classList.remove("open")
     }
     
+    const btnRelax = () => {
+        var link = 'music.html'
+        window.location.assign(link)
+    }

@@ -179,10 +179,10 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                         <label for="mobile-search-checkbox" class="header__mobile-search hide-on-pc hide-on-tablet">
                             <i class="header__mobile-search-icon fas fa-search"></i>
                         </label>
-                     </div>
+                    </div>
 
                     <div class="header__logo">
-                        <a href="#" class="header__logo-link">
+                        <a href="" class="header__logo-link">
                             <!-- <img src="https://api.freelogodesign.org/files/112bfa0b94514f7494492bb674139dbf/thumb/logo_200x200.png?v=0" class="header__logo-img" alt=""> -->
                             <img src="WJPUKI.svg" class="header__logo-img" alt="">
                         </a>
@@ -194,7 +194,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                     <div class="header__search">
                         <div class="header__search-input-wrap">
                             <input type="text" id="search-item" class="header__search-input" placeholder="Tìm kiếm trong Shop" onchange=searchChange()>
- 
+
                             <!-- Search history -->
                             <div class="header__search-history">
                                 <h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
@@ -337,7 +337,9 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                             <button class="btnDemo" id="btnDemo" onclick="btnDemo()">
                                 <h3>Demo Wjpuki</h3>
                             </button>
-
+                            <button class="btnRexlax" id="btnRelax" onclick="btnRelax()">
+                                <h3>Relax <br> Music</h3>
+                            </button>
                         </nav>
                     </div>
                                 
@@ -1646,8 +1648,8 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
     <div class="cartItem modal" id="cartItem">
             <div class="modal__overlay" onclick="closeCartList()">
 
-            </div> 
- 
+            </div>
+
             <div class="modal__body">
                 <div class="itemList">
                     <h1 class='itemList__header'>Danh sách sản phẩm trong giỏ hàng</h1>
