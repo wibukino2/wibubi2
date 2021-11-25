@@ -291,16 +291,3 @@
     font-size: 14px;
 }
 
-.itemList{
-    width: 800px;
-}
-.itemList{
-    background-color: #fff;
-    border-radius: 20px;
-    overflow: hidden;
-}
-.itemList__header{
-    background: -webkit-linear-gradient(left,#33ccff 0%, #ff99cc 100%);
-    padding: 15px 20px;
-    margin: 0;
-}

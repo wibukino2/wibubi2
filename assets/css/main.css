@@ -1137,6 +1137,7 @@ display: none;
     right: -4px;
 }
 
+.btnRexlax,
 .btnDemo{
     margin-left: 20px;
     width: 100px;
@@ -1145,10 +1146,13 @@ display: none;
     position: relative;
     z-index: 2;
 }
+.btnRexlax:hover,
 .btnDemo:hover{
     background: -webkit-linear-gradient(left,#33ccff 0%, #ff99cc 100%);
     cursor: pointer;
 }
+
+.btnRexlax:after,
 .btnDemo:after {
     content: '';
     position: absolute;
@@ -1175,10 +1179,15 @@ display: none;
     animation: animatedgradient 20s ease alternate infinite;
     background-size: 300% 300%;
 }
+
+.btnRexlax h3,
 .btnDemo h3{
     font-family:cursive;
     font-size:1.4rem;
     z-index: 3;
+}
+.btnRexlax{
+    margin-top: 40px;
 }
 
 @keyframes animatedgradient {
@@ -1636,7 +1645,7 @@ i.home-product-item__like-icon-fill{
 }
 
 .itemList__header{
-    background: -webkit-linear-gradient(left,#33ccff 0%, #ff99cc 100%);
+    background: -webkit-linear-gradient(left,#14ff28 0%, #00eeff 100%);
     padding: 15px 20px;
     margin: 0;
 }
