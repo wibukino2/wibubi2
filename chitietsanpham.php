@@ -259,7 +259,7 @@
                                     <ul class='header__cart-list-item'>
                                         <!-- cart item, -->
                                         <li class='header__cart-item'>
-                                            <img src='".$rowCart['anh']."' alt='' class='header__cart-img'>
+                                            <img src='./assets/img/product/".$rowCart['anh']."' alt='' class='header__cart-img'>
                                             <div class='header__cart-item-info'>
                                                 <div class='header__cart-item-head'>
                                                     <h5 class='header__cart-item-name'>".$rowCart['tensp']."</h5>
@@ -318,7 +318,7 @@
                 <div class='row'>
                     <div class='main__product'>
                         <div class='col l-4 main__product-item'>
-                            <img class='main__product-img' src='".$row['anh']."' alt=''>
+                            <img class='main__product-img' src='./assets/img/product/".$row['anh']."' alt=''>
                         </div>
                         <div class='col l-8 main__product-info'>
                             <h1 class='main__product-name'>
@@ -533,7 +533,7 @@
                         <ul class='header__cart-list-item'>
                             <li class='header__cart-item'>
                                     <input type='checkbox' class='header__cart-checkbox'></input>
-                                    <img src='".$rowCart['anh']."' alt='' class='header__cart-img'>
+                                    <img src='./assets/img/product/".$rowCart['anh']."' alt='' class='header__cart-img'>
                                     <div class='header__cart-item-info'>
                                         <div class='header__cart-item-head'>
                                             <h5 class='header__cart-item-name'>".$rowCart['tensp']."</h5>
