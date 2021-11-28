@@ -262,7 +262,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                                     <ul class='header__cart-list-item'>
                                         <!-- cart item, -->
                                         <li class='header__cart-item'>
-                                            <img src='".$rowCart['anh']."' alt='' class='header__cart-img'>
+                                            <img src='./assets/img/product/".$rowCart['anh']."' alt='' class='header__cart-img'>
                                             <div class='header__cart-item-info'>
                                                 <div class='header__cart-item-head'>
                                                     <h5 class='header__cart-item-name'>".$rowCart['tensp']."</h5>
@@ -426,7 +426,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                                while($row =$result -> fetch_assoc()){
                                     echo"<div onclick='openProduct()' class='col l-2-4 m-4 c-6 product-all' data-item='".$row['loaihinh']."'>
                                     <a href='chitietsanpham.php?danhmuc=chitietsp&id=".$row['id']."' class='home-product-item'>
-                                        <div class='home-product-item__img' style='background-image: url(".$row['anh'].")'></div>
+                                        <div class='home-product-item__img' style='background-image: url(./assets/img/product/".$row['anh'].")'></div>
                                         <h4 class='home-product-item__name'>".$row['tensp']."</h4>
                                         <div class='home-product-item__price'>
                                             <span class='home-product-item__price-old'>".number_format($row['giagoc'],0,',','.')."đ</span>
@@ -1661,7 +1661,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                         <ul class='header__cart-list-item'>
                             <li class='header__cart-item'>
                                     <input type='checkbox' class='header__cart-checkbox'></input>
-                                    <img src='".$rowCart['anh']."' alt='' class='header__cart-img'>
+                                    <img src='./assets/img/product/".$rowCart['anh']."' alt='' class='header__cart-img'>
                                     <div class='header__cart-item-info'>
                                         <div class='header__cart-item-head'>
                                             <h5 class='header__cart-item-name'>".$rowCart['tensp']."</h5>
