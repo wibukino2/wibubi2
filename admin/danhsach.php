@@ -49,7 +49,7 @@
                         </nav>
                     </div>
                     <div class="col l-10 m-12 c-12 product-all active-item" data-item="sanpham">
-                        <a href=""><button class="btn btn-primary">Add</button></a>
+                        <a href="quanli.php?page_layout=them"><button class="btn btn-primary">Add</button></a>
                         <div class="">
                             <table class="table-product" id="data-table">
                                 <thead class='list-head'>
@@ -94,9 +94,7 @@
                                 </tbody>
                             </table>
                             <div class="card-footer d-flex justify-content-between">
-            <a href="quanli.php?page_layout=them" >
-                Thêm mới
-            </a>
+            
 
             <?php
                 if(isset($_POST['sbm']) && !empty($_POST['search'])){?>
