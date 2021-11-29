@@ -2,7 +2,8 @@
 include 'connect.php';
 include 'loading.php';
 if(isset($_POST['comment'])){
-    $cmt = $_POST['comment'];
+    $cmt = htmlspecialchars($_POST['comment']);
+    $cmt = addslashes($cmt);
     if(isset($_SESSION['user'])){
         $postid=$_GET['id'];
         $checkuser = $_SESSION['user'];

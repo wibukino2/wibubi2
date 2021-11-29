@@ -257,6 +257,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                                 if(isset($_SESSION['user'])){
                                 $sqlCart = "select *from cartproduct,nguoidung,danhmucsp where cartproduct.userid = nguoidung.id and cartproduct.productid = danhmucsp.id and nguoidung.id = '$user[id]'";
                                 $resultCart = $conn->query($sqlCart);
+
                                 while($rowCart = $resultCart -> fetch_assoc()){
                                 echo "
                                     <ul class='header__cart-list-item'>
@@ -277,7 +278,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                                                     <span class='header__cart-item-desc'>
                                                         Phân loại:Real
                                                     </span>
-                                                    <span class='header__cart-item-remove'>Xóa</span>
+                                                    <a class='header__cart-item-remove' href='cartdelete.php?page_layout=xoa&id=".$rowCart['productid']."'> Xóa</a>
                                                 </div>
                                             </div>
                                         </li>
