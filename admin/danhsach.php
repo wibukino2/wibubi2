@@ -127,8 +127,8 @@
                                 <tr>
                                     <td align='center'>".$row['id']."</td>
                                     <td align='center'>".$row['hoten']."</td>
-                                    <td align='left'>".$row['email']."</td>
-                                    <td align='left'>".$row['sdt']."</td>
+                                    <td align='center'>".$row['email']."</td>
+                                    <td align='center'>".$row['sdt']."</td>
                                 </tr>";
                                }
                                ?>
