@@ -3,9 +3,9 @@ include 'connect.php';
 include 'loading.php';
 if(isset($_POST['email'])){
 $email = $_POST['email'];
-$password = $_POST['password'];}
-
-
+$password = htmlspecialchars($_POST['password']);
+$password = addslashes($password);
+}
 $sql = "select * from nguoidung where email='$email' and matkhau='$password' ";
 $result = mysqli_query($conn,$sql);
 $data = mysqli_fetch_assoc($result);
