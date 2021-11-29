@@ -2,7 +2,9 @@
 include 'connect.php';
 include 'loading.php';
 if(isset($_POST['email'])){
-$email = $_POST['email'];
+$email = htmlspecialchars($_POST['email']);
+$email = addslashes($email);
+
 $password = htmlspecialchars($_POST['password']);
 $password = addslashes($password);
 }
