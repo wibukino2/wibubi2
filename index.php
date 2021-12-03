@@ -418,55 +418,138 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                             </ul>
                         </nav>
 
-                        <div class="home-product">
-                            <div class="row sm-gutter">
-                                <!-- Product item -->
-                                <?php
-                                $sql = "select *from danhmucsp";
-                                $result = $conn->query($sql);
-                               while($row =$result -> fetch_assoc()){
-                                    echo"<div onclick='openProduct()' class='col l-2-4 m-4 c-6 product-all' data-item='".$row['loaihinh']."'>
-                                    <a href='chitietsanpham.php?danhmuc=chitietsp&id=".$row['id']."' class='home-product-item'>
-                                        <div class='home-product-item__img' style='background-image: url(./assets/img/product/".$row['anh'].")'></div>
-                                        <h4 class='home-product-item__name'>".$row['tensp']."</h4>
-                                        <div class='home-product-item__price'>
-                                            <span class='home-product-item__price-old'>".number_format($row['giagoc'],0,',','.')."đ</span>
-                                            <span class='home-product-item__price-current'>".number_format($row['giagiam'],0,',','.')."đ</span>
-                                        </div>
-                                        <div class='home-product-item__action'>
-                                            <span class='home-product-item__like home-product-item__like--liked'>
-                                                <i class='home-product-item__like-icon-empty far fa-heart'></i>
-                                                <i class='home-product-item__like-icon-fill fas fa-heart'></i>
-                                            </span>
-                                            <div class='home-product-item__rating'>
-                                                <i class='home-product-item__star--gold fas fa-star'></i>
-                                                <i class='home-product-item__star--gold fas fa-star'></i>
-                                                <i class='home-product-item__star--gold fas fa-star'></i>
-                                                <i class='home-product-item__star--gold fas fa-star'></i>
-                                                <i class='fas fa-star'></i>
-                                            </div>
-                                            <span class='home-product-item__sold'>".$row['daban']." sản phẩm</span>
-                                        </div>
-                                        <div class='home-product-item__origin'>
-                                            <span class='home-product-item__brand'>".$row['brand']."</span>
-                                            <span class='home-product-item__origin-name'>".$row['sanxuat']."</span>
-                                        </div>
-                                        <div class='home-product-item__favorite'>
-                                            <i class='fas fa-check'></i>
-                                            <span>Yêu thích</span>
-                                        </div>
-                                        <div class='home-product-item__sale-off'>
-                                            <span class='home-product-item__sale-off-percent'>10%</span>
-                                            <span class='home-product-item__sale-off-label'>GIẢM</span>
-                                        </div>
-                                    <a>
-                                    
-                                </div>";
-                               } ?>
+                              <!--Phân Trang -->
+<?php 
 
-                                
-                            </div>
-                        </div>
+// BƯỚC 2: TÌM TỔNG SỐ RECORDS
+$result = mysqli_query($conn, 'SELECT count(id) as total from danhmucsp');
+$row = mysqli_fetch_assoc($result);
+$total_records = $row['total'];
+ 
+// BƯỚC 3: TÌM LIMIT VÀ CURRENT_PAGE
+$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+$limit = 3;
+ 
+// BƯỚC 4: TÍNH TOÁN TOTAL_PAGE VÀ START
+// tổng số trang
+$total_page = ceil($total_records / $limit);
+ 
+// Giới hạn current_page trong khoảng 1 đến total_page
+if ($current_page > $total_page){
+    $current_page = $total_page;
+}
+else if ($current_page < 1){
+    $current_page = 1;
+}
+ 
+// Tìm Start
+$start = ($current_page - 1) * $limit;
+ 
+// BƯỚC 5: TRUY VẤN LẤY DANH SÁCH TIN TỨC
+// Có limit và start rồi thì truy vấn CSDL lấy danh sách tin tức
+$result = mysqli_query($conn, "SELECT * FROM danhmucsp LIMIT $start, $limit");
+
+ ?>
+ <div>
+ <div class="home-product">
+                            <div class="row sm-gutter">
+     <?php 
+     // PHẦN HIỂN THỊ TIN TỨC
+     // BƯỚC 6: HIỂN THỊ DANH SÁCH TIN TỨC
+     while($row =$result -> fetch_assoc()){
+          echo"<div onclick='openProduct()' class='col l-2-4 m-4 c-6 product-all' data-item='".$row['loaihinh']."'>
+          <a href='chitietsanpham.php?danhmuc=chitietsp&id=".$row['id']."' class='home-product-item'>
+              <div class='home-product-item__img' style='background-image: url(./assets/img/product/".$row['anh'].")'></div>
+              <h4 class='home-product-item__name'>".$row['tensp']."</h4>
+              <div class='home-product-item__price'>
+                  <span class='home-product-item__price-old'>".number_format($row['giagoc'],0,',','.')."đ</span>
+                  <span class='home-product-item__price-current'>".number_format($row['giagiam'],0,',','.')."đ</span>
+              </div>
+              <div class='home-product-item__action'>
+                  <span class='home-product-item__like home-product-item__like--liked'>
+                      <i class='home-product-item__like-icon-empty far fa-heart'></i>
+                      <i class='home-product-item__like-icon-fill fas fa-heart'></i>
+                  </span>
+                  <div class='home-product-item__rating'>
+                      <i class='home-product-item__star--gold fas fa-star'></i>
+                      <i class='home-product-item__star--gold fas fa-star'></i>
+                      <i class='home-product-item__star--gold fas fa-star'></i>
+                      <i class='home-product-item__star--gold fas fa-star'></i>
+                      <i class='fas fa-star'></i>
+                  </div>
+                  <span class='home-product-item__sold'>".$row['daban']." sản phẩm</span>
+              </div>
+              <div class='home-product-item__origin'>
+                  <span class='home-product-item__brand'>".$row['brand']."</span>
+                  <span class='home-product-item__origin-name'>".$row['sanxuat']."</span>
+              </div>
+              <div class='home-product-item__favorite'>
+                  <i class='fas fa-check'></i>
+                  <span>Yêu thích</span>
+              </div>
+              <div class='home-product-item__sale-off'>
+                  <span class='home-product-item__sale-off-percent'>10%</span>
+                  <span class='home-product-item__sale-off-label'>GIẢM</span>
+              </div>
+          <a>
+          
+      </div>";
+     } ?>
+     </div>
+    </div>
+    <ul class="pagination home-product--pagination">
+   
+                          
+    <?php 
+     // PHẦN HIỂN THỊ PHÂN TRANG
+     // BƯỚC 7: HIỂN THỊ PHÂN TRANG
+// nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
+if ($current_page > 1 && $total_page > 1){
+    echo '    <li class="pagination-item">
+    <a href="index.php?page='.($current_page-1).'" class="pagination-item__link">Prev</a>
+</li>
+  
+    ';
+}
+ 
+// Lặp khoảng giữa
+for ($i = 1; $i <= $total_page; $i++){
+    // Nếu là trang hiện tại thì hiển thị thẻ span
+    // ngược lại hiển thị thẻ a
+    if ($i == $current_page){
+        echo '<li class="pagination-item pagination-item--active">
+        <span class="pagination-item__link">'.$i.'</span>
+    </li>
+        
+        ';
+    }
+    else{
+        echo ' <li class="pagination-item">
+        <a href="index.php?page='.$i.'" class="pagination-item__link">'.$i.'</a>
+    </li>
+     
+        ';
+    }
+}
+ 
+// nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+if ($current_page < $total_page && $total_page > 1){
+    echo '<li class="pagination-item">
+    <a href="index.php?page='.($current_page+1).'" class="pagination-item__link">Next</a>
+</li>
+      ';
+}
+?>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+      
                         <!-- <div>
                             <div onclick="openProduct()" class="col l-2-4 m-4 c-6 product-all" data-item="figure">
                                     <a href="./chitietsanpham.html" class="home-product-item">
@@ -1356,52 +1439,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                                     
                                 </div>
                         </div> -->
-                        <h1 id="no__product">
-
-                
-                        </h1>
-                        <ul class="pagination home-product--pagination">
-                            <li class="pagination-item">
-                                <a href="" class="pagination-item__link">
-                                    <i class="pagination-item__icon fas fa-angle-left"></i>  
-                                </a>
-                            </li>
-                            
-                            <li class="pagination-item pagination-item--active">
-                                <a href="" class="pagination-item__link">1</a>
-                            </li>
-                            <li class="pagination-item">
-                                <a href="" class="pagination-item__link">2</a>
-                            </li>
-                            <li class="pagination-item">
-                                <a href="" class="pagination-item__link">3</a>
-                            </li>
-                            <li class="pagination-item">
-                                <a href="" class="pagination-item__link">4</a>
-                            </li>
-                            <li class="pagination-item">
-                                <a href="" class="pagination-item__link">5</a>
-                            </li>
-                            <li class="pagination-item">
-                                <a href="" class="pagination-item__link">...</a>
-                            </li>
-                            <li class="pagination-item">
-                                <a href="" class="pagination-item__link">14</a>
-                            </li>
-
-                            <li class="pagination-item">
-                                <a href="" class="pagination-item__link">
-                                    <i class="pagination-item__icon fas fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-
-            </div>
-            
-        </div>
+                      
 
         <footer class="footer">
             <div class="grid wide footer__content">
