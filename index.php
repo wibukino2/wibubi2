@@ -369,7 +369,7 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
 
                             <div class="home-filter__page">
                                 <span class="home-filter__page-num">
-                                    <span class="home-filter__page-now">1</span>/14
+                                    
                                 </span>
 
                                 <div class="home-filter__page-control">
