@@ -179,7 +179,7 @@
                     </div>
 
                     <div class="header__logo">
-                        <a href="/" class="header__logo-link">
+                        <a href="index.php" class="header__logo-link">
                             <!-- <img src="https://api.freelogodesign.org/files/112bfa0b94514f7494492bb674139dbf/thumb/logo_200x200.png?v=0" class="header__logo-img" alt=""> -->
                             <img src="WJPUKI.svg" class="header__logo-img" alt="">
                         </a>

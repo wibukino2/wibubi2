@@ -187,7 +187,7 @@ else{
                     </div>
 
                     <div class="header__logo">
-                        <a href="" class="header__logo-link">
+                        <a href="index.php" class="header__logo-link">
                             <!-- <img src="https://api.freelogodesign.org/files/112bfa0b94514f7494492bb674139dbf/thumb/logo_200x200.png?v=0" class="header__logo-img" alt=""> -->
                             <img src="WJPUKI.svg" class="header__logo-img" alt="">
                         </a>
@@ -198,9 +198,10 @@ else{
 
                     <div class="header__search">
                         <div class="header__search-input-wrap">
-                        <form action="" method="get">
+                        <form action="" method="get" style ="height: 100%">
                             <input type="text" name="search" id="search-item" class="header__search-input" placeholder=" <?php echo $search ?>" >
                             <!-- Search history -->
+                            
                             <div class="header__search-history">
                                 <h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
                                 <ul class="header__search-history-list">
@@ -293,6 +294,7 @@ else{
                                     </ul>
                                 ";}
                                 }
+                                
                                 ?>
                                 <a onclick=openCartList() class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</a>
                             </div>
@@ -461,7 +463,7 @@ $result = mysqli_query($conn, "SELECT * FROM danhmucsp WHERE (tensp like '%$sear
  ?>
  <div>
  <div class="home-product">
-                            <div class="row sm-gutter">
+    <div class="row sm-gutter">
      <?php 
      // PHẦN HIỂN THỊ TIN TỨC
      // BƯỚC 6: HIỂN THỊ DANH SÁCH TIN TỨC
@@ -503,7 +505,7 @@ $result = mysqli_query($conn, "SELECT * FROM danhmucsp WHERE (tensp like '%$sear
           <a>
           
       </div>";
-     } ?>
+     }?>
      </div>
     </div>
     <ul class="pagination home-product--pagination">
@@ -547,6 +549,7 @@ if ($current_page < $total_page && $total_page > 1){
 </li>
       ';
 }
+
 ?>
 </ul>
 </div>
