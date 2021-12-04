@@ -34,47 +34,6 @@ Array.from(filter_btn).forEach(function (element) {
     })
 })
 
-//search
-
-    function searchItem(){
-        // chuyển thành viết thường
-        let valueItem = search_item.value.toLowerCase();
-        Array.from(element_product).forEach(function(element){
-            let nameItem = element.querySelector('.home-product-item__name').textContent;
-            if (nameItem.toLowerCase().indexOf(valueItem) !== -1)
-            {
-                element.style.display = 'block';
-            }
-            else
-            {
-                element.style.display = 'none';
-            }
-        })
-        checkEmpty(element_product);
-    }
-    function searchChange(){
-        if (search_item.value == ''){
-            Array.from(element_product).forEach(e => {
-                e.style.display = 'block';
-            })
-        }
-    }
-
-    function checkEmpty(element){
-        let count = 0;
-        for(let i = 0; i < element.length; i++){
-            if (element[i].style.display == 'block')
-            count++;
-        }
-
-        if (count == 0){
-            document.querySelector('#no__product').textContent = 'Can\'t find'; 
-        }
-        else{
-            document.querySelector('#no__product').textContent = ''; 
-        }
-    }
-
 //demo
     
     function btnDemo(){

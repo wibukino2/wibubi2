@@ -1,7 +1,12 @@
 <?php require_once('connect.php');
 
 $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
-
+if (isset( $_GET['submit']) && $_GET["search"] != '') {
+    $search = $_GET['search'];
+}
+else{
+    $search="";
+}
 
 ?>
 <!DOCTYPE html>
@@ -193,8 +198,8 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
 
                     <div class="header__search">
                         <div class="header__search-input-wrap">
-                            <input type="text" id="search-item" class="header__search-input" placeholder="Tìm kiếm trong Shop" onchange=searchChange()>
-
+                        <form action="" method="get">
+                            <input type="text" name="search" id="search-item" class="header__search-input" placeholder=" <?php echo $search ?>" >
                             <!-- Search history -->
                             <div class="header__search-history">
                                 <h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
@@ -225,11 +230,14 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                                 </li>
                             </ul>
                         </div>
-                        <button class="header__search-btn" onclick=searchItem() >
+                       
+                        <button type="submit" name="submit" class="header__search-btn"  >
                             <i class="header__search-btn-icon fas fa-search"></i>
                         </button>
+                            </form>
                     </div>
-
+                   
+                   
                     <!-- Cart -->
                     <div class="header__cart">
                         
@@ -343,7 +351,8 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                             </button>
                         </nav>
                     </div>
-                                
+                       
+   
                     <div class="col l-10 m-12 c-12 ">
                         <div class="home-filter hide-on-mobile-tablet">
                             <span class="home-filter__lable">Sắp xếp theo</span>
@@ -354,15 +363,14 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
                             <div class="select-input">
                                 <span class="select-input__label">Giá</span>
                                 <i class="select-input__icon fas fa-chevron-down"></i>
-
                                 <!-- List option -->
                                 <ul class="select-input__list">
                                     <li class="select-input__item">
-                                        <a href="" class="select-input__link">Giá: Thấp đến cao</a>
+                                        <a href="?field=price&sort=asc" class="select-input__link">Giá: Thấp đến cao</a>
                                     </li>
 
                                     <li class="select-input__item">
-                                        <a href="" class="select-input__link">Giá: Cao đến thấp</a>
+                                        <a href="?field=price&sort=desc" class="select-input__link">Giá: Cao đến thấp</a>
                                     </li>
                                 </ul>
                             </div>
@@ -425,10 +433,10 @@ $user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
 $result = mysqli_query($conn, 'SELECT count(id) as total from danhmucsp');
 $row = mysqli_fetch_assoc($result);
 $total_records = $row['total'];
- 
+
 // BƯỚC 3: TÌM LIMIT VÀ CURRENT_PAGE
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-$limit = 3;
+$limit = 5 ;
  
 // BƯỚC 4: TÍNH TOÁN TOTAL_PAGE VÀ START
 // tổng số trang
@@ -447,7 +455,8 @@ $start = ($current_page - 1) * $limit;
  
 // BƯỚC 5: TRUY VẤN LẤY DANH SÁCH TIN TỨC
 // Có limit và start rồi thì truy vấn CSDL lấy danh sách tin tức
-$result = mysqli_query($conn, "SELECT * FROM danhmucsp LIMIT $start, $limit");
+$result = mysqli_query($conn, "SELECT * FROM danhmucsp WHERE (tensp like '%$search%')  LIMIT   $start, $limit");
+ 
 
  ?>
  <div>
@@ -520,7 +529,6 @@ for ($i = 1; $i <= $total_page; $i++){
         echo '<li class="pagination-item pagination-item--active">
         <span class="pagination-item__link">'.$i.'</span>
     </li>
-        
         ';
     }
     else{
@@ -549,7 +557,8 @@ if ($current_page < $total_page && $total_page > 1){
 
 </div>
 
-      
+       
+
                         <!-- <div>
                             <div onclick="openProduct()" class="col l-2-4 m-4 c-6 product-all" data-item="figure">
                                     <a href="./chitietsanpham.html" class="home-product-item">
