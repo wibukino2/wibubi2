@@ -1,6 +1,5 @@
 <?php
     $id = $_GET['id'];
-
     $sql_up = "SELECT * FROM danhmucsp WHERE id = $id";
     $query_up = mysqli_query($conn, $sql_up);
     $row_up = mysqli_fetch_assoc($query_up);
@@ -22,10 +21,13 @@
         $giagiam = $_POST['giagiam'];
         $sanxuat = $_POST['sanxuat'];
         $loaihinh = $_POST['loaihinh'];
+        $thongtin = $_POST['thongtin'];
 
-        $sql = "UPDATE danhmucsp SET tensp = '$tensp', anh = '$image', giagoc = $giagoc, giagiam = $giagiam, sanxuat = '$sanxuat', loaihinh = $loaihinh WHERE id = $id";
+        $sql = "UPDATE danhmucsp SET tensp = '$tensp', anh = '$image', giagoc = '$giagoc', giagiam = '$giagiam', sanxuat = '$sanxuat', loaihinh = '$loaihinh' WHERE id = '$id'";
+        $sqle = "UPDATE chitietsp SET tensp = '$tensp',gia = '$giagiam', thongtin = '$thongtin' WHERE id = '$id'";
 
         $query = mysqli_query($conn, $sql);
+        $query = mysqli_query($conn, $sqle);
         header('location: quanli.php');
     }
 ?>
@@ -44,7 +46,7 @@
 
                 <div class="form-group">
                     <label>Image</label> <br>
-                    <input type="file" name="image">
+                    <input type="file" name="anh">
                 </div>
 
                 <div class="form-group">
@@ -65,6 +67,11 @@
                 <div class="form-group">
                     <label>Type</label>
                     <input type="text" name="loaihinh" class="form-control" value="<?php echo $row_up['loaihinh']; ?>">
+                </div>
+
+                <div class="form-group">
+                    <label>Information</label>
+                    <input type="text" name="thongtin" class="form-control" >
                 </div>
                     <button name="sbm" class="btn btn-success">Sửa</button>
             </form>

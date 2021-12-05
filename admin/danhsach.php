@@ -85,7 +85,7 @@
                                     <td  align="center"><?php echo $row['sanxuat']; ?></td>
                                     <td  align="center"><?php echo $row['loaihinh']; ?></td>
                                     <td  align="center">
-                                        <a  href="quanli.php?page_layout=sua=<?php echo $row['id']; ?>"> Sửa</a>
+                                        <a  href="quanli.php?page_layout=sua&id=<?php echo $row['id']; ?>"> Sửa</a>
     
                                         <a onclick="return Del('<?php  echo $row['tensp'];?>')"  href="quanli.php?page_layout=xoa&id=<?php echo $row['id']; ?>"> Xóa</a>
                                     </td>
@@ -106,7 +106,7 @@
                         </div>
                     </div>
                     <div class="col l-10 m-12 c-12 product-all active-item" data-item="user">
-                        <a href=""><button class="btn btn-primary">Add</button></a>
+    
                         <div class="templatemo-content-widget no-padding">
                             <div class="panel panel-default table-responsive table-padding">
                                 <table class="table table-striped table-bordered templatemo-user-table" id="data-table">
