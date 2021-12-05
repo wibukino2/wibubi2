@@ -25,7 +25,6 @@ else{
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;1,300&display=swap">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css">
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
-    
 </head>
 <body>
     <class class="app">
@@ -127,17 +126,14 @@ else{
                         </li>
                         <!-- <li class="header__navbar-item header__navbar-item--bold header__navbar-item--separate">Đăng ký</li>
                         <li class="header__navbar-item header__navbar-item--bold">Đăng nhập</li> -->            
-           <!--Khoan hẳng xoá--> <!-- <img src="https://cf.shopee.vn/file/8e289302619dfd2b67f9795e097c420f_tn" alt="" class="header__navbar-user-img"> -->
+        <!--Khoan hẳng xoá--> <!-- <img src="https://cf.shopee.vn/file/8e289302619dfd2b67f9795e097c420f_tn" alt="" class="header__navbar-user-img"> -->
                         <li class="header__navbar-item header__navbar-user">
                             <?php if(isset($_SESSION['user'])){ ?>                        
                             <img src="https://cf.shopee.vn/file/8e289302619dfd2b67f9795e097c420f_tn" alt="" class="header__navbar-user-img">
                             <span class="header__navbar-user-name"><?php echo $user['email'] ?></span>
                             <ul class="header__navbar-user-menu">
                                 <li class="header__navbar-user-item">
-                                    <a href="">Tài khoản của tôi</a>
-                                </li>
-                                <li class="header__navbar-user-item">
-                                    <a href="">Địa chỉ của tôi</a>
+                                    <a href="personalprofile.php">Tài khoản của tôi</a>
                                 </li>
                                 <li class="header__navbar-user-item">
                                     <a href="">Đơn mua</a>
@@ -1727,7 +1723,7 @@ if ($current_page < $total_page && $total_page > 1){
                                             <span class='header__cart-item-desc'>
                                                 Phân loại:Real
                                             </span>
-                                            <span class='header__cart-item-remove'>Xóa</span>
+                                            <a class='header__cart-item-remove' href='cartdelete.php?page_layout=xoa&id=".$rowCart['productid']."'> Xóa</a>
                                         </div>
                                     </div>
                                 </li>

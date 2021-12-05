@@ -9,5 +9,5 @@ $sql = "insert into nguoidung (email,matkhau) values ('$email','$password')";
 $result = $conn->query($sql);
 
 
-
+header('location: index.php');
 ?>

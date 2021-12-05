@@ -126,10 +126,7 @@
                             <span class="header__navbar-user-name"><?php echo $user['email'] ?></span>
                             <ul class="header__navbar-user-menu">
                                 <li class="header__navbar-user-item">
-                                    <a href="">Tài khoản của tôi</a>
-                                </li>
-                                <li class="header__navbar-user-item">
-                                    <a href="">Địa chỉ của tôi</a>
+                                    <a href="personalprofile.php">Tài khoản của tôi</a>
                                 </li>
                                 <li class="header__navbar-user-item">
                                     <a href="">Đơn mua</a>
@@ -274,7 +271,7 @@
                                                     <span class='header__cart-item-desc'>
                                                         Phân loại:Real
                                                     </span>
-                                                    <span class='header__cart-item-remove'>Xóa</span>
+                                                    <a class='header__cart-item-remove' href='cartdelete.php?page_layout=xoa&id=".$rowCart['productid']."'> Xóa</a>
                                                 </div>
                                             </div>
                                         </li>
@@ -548,7 +545,7 @@
                                             <span class='header__cart-item-desc'>
                                                 Phân loại:Real
                                             </span>
-                                            <span class='header__cart-item-remove'>Xóa</span>
+                                            <a class='header__cart-item-remove' href='cartdelete.php?page_layout=xoa&id=".$rowCart['productid']."'> Xóa</a>
                                         </div>
                                     </div>
                                 </li>
