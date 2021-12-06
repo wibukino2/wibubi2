@@ -1,3 +1,9 @@
+<?php require_once('connect.php');
+
+$user = (isset($_SESSION['user'])) ? $user = $_SESSION['user'] : [];
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,13 +25,16 @@
 
 <body>
 <div class="container-fluid">
-
+<?php 
+$profile = mysqli_query($conn, "SELECT * FROM nguoidung WHERE nguoidung.id = $user[id]");
+while($row =$profile -> fetch_assoc()){
+?>
     <div class="row extra_margin">
     <div class="col-md-4 col-sm-12 col-xs-12">
         <div class="text-center">
             <img src="WJPUKI.svg" class="img-rounded"/>
 
-              <h2>Wipuki User Name</h2>
+              <h2><?php echo $row['hoten'] ?></h2>
               <p>
                 <a class="btn btn-primary btn-xs" href="#" role="button">Facebook</a>
                 <a class="btn btn-primary btn-xs" href="#" role="button">Twitter</a>
@@ -41,15 +50,15 @@
         <hr />
 
         <p>
-            Email: 
+            Email: <?php echo $row['email'] ?>
         </p>
 
         <p>
-            SDT: 
+            SDT: <?php echo $row['sdt'] ?>
         </p>
 
         <p>
-            Địa chỉ:
+            Địa chỉ:<?php echo $row['diachi'] ?>
         </p>
 
 
@@ -57,7 +66,7 @@
       </div>
 
     </div>
-
+    <?php } ?>
   </div>
 
 
