@@ -19,8 +19,8 @@ else{
     <meta name="author" content="Wjpuki">
     <meta name="keywords" content="Figure Cosplay">
     <!-- <meta name="robots" content="nosnippet"/> -->
-
     <title>WjpuKi</title>
+
     <link rel="icon" href="./icon.png" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./assets/css/base.css">
@@ -39,7 +39,6 @@ else{
                     <ul class="header__navbar-list">
                         <li class="header__navbar-item header__navbar-item--has-qr header__navbar-item--separate">
                             Vào cửa hàng trên web
-                            
                             <!-- Header QR Code -->
                             <div class="header__qr">
                                 <img src="./assets/img/qr-code.png" alt="QR Code" class="header__qr-img">
