@@ -1,8 +1,12 @@
 <?php
-$servername = "remotemysql.com";
-$username = "5RHsUm0JGH";
-$password = "DQPKxILx5x";
-$database = "5RHsUm0JGH";
+$servername = "h21665.tino.org";
+$username = "wjpukico_wjpuki";
+$password = "Nghialop12a15";
+$database = "wjpukico_wjpuki";
+// $servername = "remotemysql.com";
+// $username = "5RHsUm0JGH";
+// $password = "DQPKxILx5x";
+// $database = "5RHsUm0JGH";
 // Create connection
 $conn = new mysqli($servername, $username, $password,$database);
 // Check connection
