@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta description="Wjpuki là một trong những shop Anime hàng đầu cả nước, chuyên bán và nhận order mô hình figure, đồ chơi, móc khóa, đồ, trang phục và phụ kiện cosplay các loại.">
+    <meta name="description" content="Wjpuki là một trong những shop Anime hàng đầu cả nước, chuyên bán và nhận order mô hình figure, đồ chơi, móc khóa, đồ, trang phục và phụ kiện cosplay các loại.">
     <meta name="author" content="Wjpuki">
     <meta name="keywords" content="Figure Cosplay">
     <!-- <meta name="robots" content="nosnippet"/> -->
@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css">
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="./assets/css/chitiet.css">
+    <link rel="canonical" href="https://wjpuki.com/"/>
 </head>
 <body>
     <class class="app">
@@ -63,9 +64,9 @@
                                 Thông báo
                             </a>
                             <div class="header__noti">
-                                <header class="header__noti-header">
+                                <div class="header__noti-header">
                                     <h3>Thông báo mới nhận</h3>
-                                </header>
+                                </div>
                                 <ul class="header__noti-list">
                                     <li class="header__noti-item header__noti-item--viewed">
                                         <a href="" class="header__noti-link">
@@ -108,9 +109,9 @@
                                     </li>
                                 </ul>
 
-                                <footer class="header__noti-footer">
+                                <div class="header__noti-footer">
                                     <a href="" class="header__noti-footer-btn">Xem tất cả</a>
-                                </footer>
+                                </div>
 
                             </div>
 
@@ -397,10 +398,10 @@
             echo"  
                         <div class='product-comment__list'>
                         <form action='comment.php?danhmuc=chitietsp&id=".$id."' method='POST' role='form'>
-                        <h1 id=''>Bình luận</h1>
-                        <textarea type='text' id='comment' name='comment' rows='4' cols='105' placeholder='Hãy nêu cảm nghĩ của bạn...'></textarea>
-                        
-                        <div class='product-comment__list'><input type='submit' class='button' value='Submit'></div>
+                            <h1 id=''>Bình luận</h1>
+                            <textarea type='text' id='comment' name='comment' rows='4' cols='105' placeholder='Hãy nêu cảm nghĩ của bạn...'></textarea>
+                            
+                            <div class='product-comment__list'><input type='submit' class='button' value='Submit'></div>
                         </form>
                         </div>"?>
                         <?php 
@@ -694,5 +695,32 @@
     <script src="./login.js"></script>
 <script src="./main.js"></script>
 <script src="./chitietsanpham.js"></script>
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://wjpuki.com/"
+        },
+        "headline": "Wjpuki chuyên bán và nhận order mô hình figure, đồ chơi, móc khóa, trang phục và phụ kiện cosplay các loại.",
+        "image": "https://wjpuki.com/WJPUKI.svg",
+        "author": {
+        "@type": "Organization",
+        "name": "Wjpuki",
+        "url": "https://www.facebook.com/WjpuKi-112675484529031/?ref=pages_you_manage"
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "wjpuki",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://wjpuki.com/WJPUKI.svg"
+        }
+        },
+        "datePublished": "2022-03-28",
+        "dateModified": "2022-03-28"
+    }
+    </script>
 </body>
 </html>

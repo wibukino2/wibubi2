@@ -49,6 +49,9 @@
     .app__content{
         padding-top: 8px;
     }
+    .footer{
+        width: 100%;
+    }
 }
 
 /* tablet */

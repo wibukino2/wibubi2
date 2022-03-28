@@ -213,7 +213,8 @@
 
 
 .header__qr-img{
-    width: 100%;
+    width: 100px;
+    height: 100px;
 }
 
 .header__qr-apps{
@@ -1137,57 +1138,33 @@ display: none;
     right: -4px;
 }
 
-.btnRexlax,
-.btnDemo{
+#btnRelax,
+#btnDemo{
     margin-left: 20px;
     width: 100px;
     border-radius: 30px;
     background: -webkit-linear-gradient(left,#ff99cc 0%, #33ccff 100%);
     position: relative;
     z-index: 2;
+    border: 2px solid rgb(0, 0, 0);
+    padding: 10px 30px;
+    background-color: rgba(0, 0, 0, 0,)
 }
-.btnRexlax:hover,
-.btnDemo:hover{
+#btnRelax:hover,
+#btnDemo:hover{
     background: -webkit-linear-gradient(left,#33ccff 0%, #ff99cc 100%);
     cursor: pointer;
 }
 
-.btnRexlax:after,
-.btnDemo:after {
-    content: '';
-    position: absolute;
-    right: -2px;
-    top: -1.5px;
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    background: linear-gradient(
-    45deg,
-    #fb0094,
-    #0000ff,
-    #00ff00,
-    #ffff00,
-    #ff0000,
-    #fb0094,
-    #0000ff,
-    #00ff00,
-    #ffff00,
-    #ff0000
-    );
-    border-radius: calc(2 * 30px);
-    z-index: -1;
-    filter: blur(10px);
-    animation: animatedgradient 20s ease alternate infinite;
-    background-size: 300% 300%;
-}
 
-.btnRexlax h3,
-.btnDemo h3{
+#btnRelax h3,
+#btnDemo h3{
     font-family:cursive;
     font-size:1.4rem;
     z-index: 3;
 }
-.btnRexlax{ 
-    margin-top: 40px;
+#btnRelax{ 
+    margin-top: 5px;
 }
 
 @keyframes animatedgradient {
@@ -1538,6 +1515,7 @@ i.home-product-item__like-icon-fill{
 .footer{
     border-top:4px solid var(--primary-color);
     padding-top:24px;
+    width: 100%;
 }
 
 .footer__heading{

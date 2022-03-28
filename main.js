@@ -1,6 +1,3 @@
-function openProduct(){
-    window.location('chitietsanpham.html')
-}
 const iconRun = document.querySelector('.header__logo-img')
 
 const iconAnimate = iconRun.animate([{ transform: "rotate(360deg)" }], {
