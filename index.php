@@ -32,6 +32,14 @@ else{
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
 
     <link rel="canonical" href="https://wjpuki.com/"/>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id=%27+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NVGS6C8');</script>
+    <!-- End Google Tag Manager -->
 </head>
 <body>
     <div class="app">
@@ -913,6 +921,9 @@ else{
         "dateModified": "2022-03-28"
     }
     </script>
-
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVGS6C8"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 </body>
 </html>
